@@ -94,6 +94,6 @@ class Video extends Model
             return "https://img.youtube.com/vi/{$this->youtube_id}/maxresdefault.jpg";
         }
 
-        return asset('assets/img/default-video.jpg');
+    return null;
     }
 }

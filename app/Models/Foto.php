@@ -44,7 +44,7 @@ class Foto extends Model
         }
         
         // Return default image if foto doesn't exist
-        return asset('assets/images/backgrounds/no-image.jpg');
+    return null;
     }
 
     /**

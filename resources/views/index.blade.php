@@ -30,12 +30,19 @@
                         <div class="post-item position-relative h-100" data-aos="fade-up"
                             data-aos-delay="{{ $loop->iteration * 100 }}">
                             <div class="post-img position-relative overflow-hidden">
-                                <img src="{{ asset('storage/' . $berita->gambar) }}" class="img-fluid"
-                                    alt="{{ $berita->judul }}"
-                                    onerror="this.src='{{ asset('assets/img/blog/default-news.jpg') }}'">
-                                <span class="post-date">{{ \Carbon\Carbon::parse($berita->tanggal)->format('F d') }}</span>
-                            </div>
+                                @if(!empty($berita->gambar) && file_exists(public_path('storage/' . $berita->gambar)))
+                                    <img src="{{ asset('storage/' . $berita->gambar) }}" class="img-fluid"
+                                        alt="{{ $berita->judul }}">
+                                @else
+                                    <div class="no-image-icon">
+                                        <i class="bi bi-image"></i>
+                                    </div>
+                                @endif
 
+                                <span class="post-date">
+                                    {{ \Carbon\Carbon::parse($berita->tanggal)->format('F d') }}
+                                </span>
+                            </div>
                             <div class="post-content d-flex flex-column">
                                 <h3 class="post-title">{{ Str::limit($berita->judul, 60) }}</h3>
                                 <div class="meta d-flex align-items-center">
@@ -92,14 +99,21 @@
                     <div class="col-lg-4" data-aos="fade-up" data-aos-delay="{{ $loop->iteration * 100 }}">
                         <div class="video-card">
                             <div class="video-thumbnail position-relative">
-                                <img src="{{ $video->thumbnail_url }}" class="img-fluid" alt="{{ $video->judul }}"
-                                    onerror="this.src='{{ asset('assets/images/backgrounds/no-image.jpg') }}'">
+                                @if(!empty($video->thumbnail_url))
+                                    <img src="{{ $video->thumbnail_url }}" class="img-fluid" alt="{{ $video->judul }}">
+                                @else
+                                    <div class="no-image-icon">
+                                        <i class="bi bi-camera-video"></i>
+                                    </div>
+                                @endif
+
                                 <div class="video-play-overlay">
                                     <button type="button" class="video-play-btn" onclick="playVideo({{ $video->id }})">
                                         <i class="bi bi-play-fill"></i>
                                     </button>
                                 </div>
                             </div>
+
                             <div class="video-info">
                                 <h3 class="video-title">{{ $video->judul }}</h3>
                                 <div class="video-date">
@@ -142,12 +156,19 @@
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ $loop->iteration * 100 }}">
                         <div class="foto-card" onclick="showFotoModal({{ $foto->id }})">
                             <div class="foto-img">
-                                <img src="{{ asset('storage/' . $foto->foto) }}" class="img-fluid" alt="{{ $foto->judul }}"
-                                    onerror="this.src='{{ asset('assets/images/backgrounds/no-image.jpg') }}'">
+                                @if(!empty($foto->foto) && file_exists(public_path('storage/' . $foto->foto)))
+                                    <img src="{{ asset('storage/' . $foto->foto) }}" class="img-fluid" alt="{{ $foto->judul }}">
+                                @else
+                                    <div class="no-image-icon">
+                                        <i class="bi bi-image"></i>
+                                    </div>
+                                @endif
+
                                 <div class="foto-overlay">
                                     <i class="bi bi-zoom-in"></i>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 @empty
@@ -186,23 +207,23 @@
                                 @php
                                     $thumbnail = $item->files->first();
                                 @endphp
-                                
-                                @if($thumbnail)
-                                    <img src="{{ asset('storage/' . $thumbnail->file_path) }}" 
-                                         class="img-fluid" 
-                                         alt="{{ $item->judul }}"
-                                         onerror="this.src='{{ asset('assets/images/backgrounds/no-image.jpg') }}'">
+
+                                @if($thumbnail && file_exists(public_path('storage/' . $thumbnail->file_path)))
+                                    <img src="{{ asset('storage/' . $thumbnail->file_path) }}" class="img-fluid"
+                                        alt="{{ $item->judul }}">
+
                                     @if($item->files->count() > 1)
                                         <span class="badge-pages">
                                             <i class="bi bi-images me-1"></i>{{ $item->files->count() }}
                                         </span>
                                     @endif
                                 @else
-                                    <div class="no-image">
+                                    <div class="no-image-icon">
                                         <i class="bi bi-image"></i>
                                         <p>No Image</p>
                                     </div>
                                 @endif
+
                                 <div class="infografis-overlay">
                                     <i class="bi bi-zoom-in"></i>
                                     <p class="mt-2">Lihat Detail</p>
@@ -295,7 +316,7 @@
                         <div class="custom-slider-wrapper" id="customSliderWrapper">
                             <!-- Images will be loaded here -->
                         </div>
-                        
+
                         <!-- Navigation Buttons -->
                         <button class="custom-nav-btn custom-nav-prev" id="customPrevBtn">
                             <i class="bi bi-chevron-left"></i>
@@ -303,7 +324,7 @@
                         <button class="custom-nav-btn custom-nav-next" id="customNextBtn">
                             <i class="bi bi-chevron-right"></i>
                         </button>
-                        
+
                         <!-- Page Counter -->
                         <div class="custom-page-counter">
                             <span id="customCurrentPage">1</span> / <span id="customTotalPages">1</span>
@@ -388,10 +409,10 @@
                 .then(data => {
                     customSliderImages = data.files;
                     customCurrentIndex = 0;
-                    
+
                     renderCustomSlider();
                     updateCustomNavigation();
-                    
+
                     const modal = new bootstrap.Modal(document.getElementById('infografisModal'));
                     modal.show();
                 })
@@ -404,44 +425,44 @@
         function renderCustomSlider() {
             const wrapper = document.getElementById('customSliderWrapper');
             wrapper.innerHTML = '';
-            
+
             customSliderImages.forEach((file, index) => {
                 const slide = document.createElement('div');
                 slide.className = 'custom-slide';
                 slide.style.display = index === customCurrentIndex ? 'flex' : 'none';
                 slide.innerHTML = `
-                    <img src="${file.file_url}" 
-                         alt="Slide ${index + 1}"
-                         draggable="false">
-                `;
+                                    <img src="${file.file_url}" 
+                                         alt="Slide ${index + 1}"
+                                         draggable="false">
+                                `;
                 wrapper.appendChild(slide);
             });
-            
+
             updateCustomCounter();
         }
 
         function customGoToSlide(index) {
             if (customIsAnimating) return;
-            
+
             const slides = document.querySelectorAll('.custom-slide');
             if (slides.length === 0) return;
-            
+
             // Normalize index
             if (index < 0) index = slides.length - 1;
             if (index >= slides.length) index = 0;
-            
+
             customIsAnimating = true;
-            
+
             // Hide current slide
             slides[customCurrentIndex].style.display = 'none';
-            
+
             // Show new slide
             customCurrentIndex = index;
             slides[customCurrentIndex].style.display = 'flex';
-            
+
             updateCustomCounter();
             updateCustomNavigation();
-            
+
             setTimeout(() => {
                 customIsAnimating = false;
             }, 300);
@@ -463,7 +484,7 @@
         function updateCustomNavigation() {
             const prevBtn = document.getElementById('customPrevBtn');
             const nextBtn = document.getElementById('customNextBtn');
-            
+
             // Always show buttons for circular navigation
             prevBtn.style.display = 'flex';
             nextBtn.style.display = 'flex';
@@ -482,7 +503,7 @@
         function handleCustomSwipe() {
             const swipeThreshold = 50;
             const diff = customTouchStartX - customTouchEndX;
-            
+
             if (Math.abs(diff) > swipeThreshold) {
                 if (diff > 0) {
                     customNextSlide();
@@ -542,7 +563,7 @@
             // Infografis Modal Cleanup
             const infografisModalEl = document.getElementById('infografisModal');
             if (infografisModalEl) {
-                infografisModalEl.addEventListener('hidden.bs.modal', function() {
+                infografisModalEl.addEventListener('hidden.bs.modal', function () {
                     customSliderImages = [];
                     customCurrentIndex = 0;
                     document.getElementById('customSliderWrapper').innerHTML = '';
@@ -590,7 +611,7 @@
         });
 
         // Keyboard Navigation for Custom Slider
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             const infografisModal = document.getElementById('infografisModal');
             if (infografisModal && infografisModal.classList.contains('show') && !customIsAnimating) {
                 if (e.key === 'ArrowLeft') {
