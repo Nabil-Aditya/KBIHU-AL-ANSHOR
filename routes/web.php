@@ -3,14 +3,15 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\BeritaPublicController;
-use App\Http\Controllers\VideoPublicController;
-use App\Http\Controllers\FotoPublicController;
-use App\Http\Controllers\InfografisPublicController;
-use App\Http\Controllers\Admin\BeritaController;
-use App\Http\Controllers\Admin\VideoController;
+use App\Http\Controllers\Admin\DoaController;
 use App\Http\Controllers\Admin\FotoController;
+use App\Http\Controllers\FotoPublicController;
+use App\Http\Controllers\Admin\VideoController;
+use App\Http\Controllers\VideoPublicController;
+use App\Http\Controllers\Admin\BeritaController;
+use App\Http\Controllers\BeritaPublicController;
 use App\Http\Controllers\Admin\InfografisController;
+use App\Http\Controllers\InfografisPublicController;
 
 // Public Routes - Homepage
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -102,4 +103,13 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(fun
     Route::put('/infografis/{id}', [InfografisController::class, 'update'])->where('id', '[0-9]+')->name('infografis.update');
     Route::delete('/infografis/{id}', [InfografisController::class, 'destroy'])->where('id', '[0-9]+')->name('infografis.destroy');
     Route::delete('/infografis/file/{file}', [InfografisController::class, 'deleteFile'])->name('infografis.deleteFile');
+    
+    
+    // Doa
+    Route::get('/doa', [DoaController::class, 'index'])->name('doa.index');
+    Route::post('/doa', [DoaController::class, 'store'])->name('doa.store');
+    Route::get('/doa/{id}', [DoaController::class, 'show'])->where('id', '[0-9]+')->name('doa.show');
+    Route::put('/doa/{id}', [DoaController::class, 'update'])->where('id', '[0-9]+')->name('doa.update');
+    Route::delete('/doa/{id}', [DoaController::class, 'destroy'])->where('id', '[0-9]+')->name('doa.destroy');
+    Route::delete('/doa/file/{file}', [DoaController::class, 'deleteFile'])->name('doa.deleteFile');
 });
