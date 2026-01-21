@@ -4,13 +4,13 @@
     <div class="row gy-4">
       <div class="col-lg-4 col-md-6 footer-about">
         <a href="" class="d-flex align-items-center">
-          <span class="sitename">Kemenhaj Batam</span>
+          <span class="sitename">Kbihu Al Anshor</span>
         </a>
         <div class="footer-contact pt-3">
-          <p>Kementerian Haji dan Umrah Kota Batam</p>
+          <p>Kbihu Al Anshor</p>
           <p>Batam, Kepulauan Riau</p>
           <p class="mt-3"><strong>Phone:</strong> <span>+62 778 123456</span></p>
-          <p><strong>Email:</strong> <span>info@kemenhaj-batam.go.id</span></p>
+          <p><strong>Email:</strong> <span>KbihuAlAnshor@gmail.com</span></p>
         </div>
       </div>
 
