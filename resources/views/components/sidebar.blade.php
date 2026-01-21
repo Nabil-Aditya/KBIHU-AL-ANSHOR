@@ -56,6 +56,12 @@
             <span class="hide-menu">Kelola Infografis</span>
           </a>
         </li>
+        <li class="sidebar-item {{ request()->routeIs('admin.doa.*') ? 'active' : '' }}">
+          <a class="sidebar-link" href="{{ route('admin.doa.index') }}" aria-expanded="false">
+            <span><i class="ti ti-chart-infographic"></i></span>
+            <span class="hide-menu">Kelola Doa</span>
+          </a>
+        </li>
 
         <!-- UI Components Section -->
         <li class="nav-small-cap">
