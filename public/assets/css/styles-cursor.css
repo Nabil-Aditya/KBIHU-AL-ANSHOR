@@ -1,0 +1,495 @@
+/* ========================================
+   CUSTOM CURSOR STYLES
+   ======================================== */
+
+/* 1. DEFAULT CURSOR HIDDEN */
+* {
+  cursor: none !important;
+}
+
+/* Touch devices: show default cursor */
+@media (hover: none) and (pointer: coarse) {
+  * {
+    cursor: auto !important;
+  }
+  .custom-cursor {
+    display: none !important;
+  }
+}
+
+/* 2. CUSTOM CURSOR CONTAINER */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  z-index: 999999;
+  mix-blend-mode: difference;
+  transition: transform 0.15s ease;
+  display: none;
+}
+
+/* 3. CURSOR DOT (Inner circle) */
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  background: #f0a23b;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 0 10px rgba(240, 162, 59, 0.5);
+}
+
+/* 4. CURSOR OUTLINE (Outer circle) */
+.cursor-outline {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #f0a23b;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  opacity: 0.6;
+  box-shadow: 0 0 15px rgba(240, 162, 59, 0.3);
+}
+
+/* 5. HOVER EFFECTS */
+/* Links */
+a:hover ~ .custom-cursor,
+button:hover ~ .custom-cursor,
+.custom-cursor.hover {
+  .cursor-dot {
+    width: 10px;
+    height: 10px;
+    background: #ff6b6b;
+    box-shadow: 0 0 15px rgba(255, 107, 107, 0.7);
+  }
+  
+  .cursor-outline {
+    width: 50px;
+    height: 50px;
+    border-color: #ff6b6b;
+    border-width: 3px;
+    opacity: 0.8;
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+  }
+}
+
+/* 6. CLICK EFFECT */
+.custom-cursor.click {
+  .cursor-dot {
+    width: 8px;
+    height: 8px;
+    background: #4ecdc4;
+    box-shadow: 0 0 12px rgba(78, 205, 196, 0.6);
+  }
+  
+  .cursor-outline {
+    width: 40px;
+    height: 40px;
+    border-color: #4ecdc4;
+    opacity: 0.9;
+    box-shadow: 0 0 25px rgba(78, 205, 196, 0.4);
+  }
+}
+
+/* 7. DRAG EFFECT */
+.custom-cursor.drag {
+  .cursor-dot {
+    background: #45b7d1;
+    width: 12px;
+    height: 12px;
+  }
+  
+  .cursor-outline {
+    border-color: #45b7d1;
+    width: 60px;
+    height: 60px;
+    opacity: 0.7;
+    animation: pulse 1.5s infinite;
+  }
+}
+
+/* 8. DISABLED STATE */
+.custom-cursor.disabled {
+  .cursor-dot {
+    background: #95a5a6;
+    width: 4px;
+    height: 4px;
+  }
+  
+  .cursor-outline {
+    border-color: #95a5a6;
+    width: 25px;
+    height: 25px;
+    opacity: 0.4;
+  }
+}
+
+/* 9. TEXT SELECTION */
+.custom-cursor.text {
+  .cursor-dot {
+    background: #3498db;
+    width: 4px;
+    height: 15px;
+    border-radius: 2px;
+  }
+  
+  .cursor-outline {
+    border-color: #3498db;
+    width: 8px;
+    height: 35px;
+    border-radius: 4px;
+    opacity: 0.5;
+  }
+}
+
+/* 10. LOADING STATE */
+.custom-cursor.loading {
+  .cursor-dot {
+    animation: spin 1s linear infinite;
+    background: conic-gradient(#f0a23b, #ff6b6b, #4ecdc4, #f0a23b);
+  }
+  
+  .cursor-outline {
+    animation: spinReverse 1.5s linear infinite;
+    border-color: transparent;
+    border-top-color: #f0a23b;
+    border-right-color: #ff6b6b;
+    border-bottom-color: #4ecdc4;
+    border-left-color: #3498db;
+  }
+}
+
+/* 11. ZOOM IN EFFECT */
+.custom-cursor.zoom-in {
+  .cursor-dot {
+    background: #9b59b6;
+  }
+  
+  .cursor-outline {
+    border-color: #9b59b6;
+    animation: zoomInOut 1s ease-in-out infinite;
+  }
+}
+
+/* 12. EXPANDED FOR LARGE ELEMENTS */
+.custom-cursor.expanded {
+  .cursor-dot {
+    width: 15px;
+    height: 15px;
+    background: #e74c3c;
+  }
+  
+  .cursor-outline {
+    width: 70px;
+    height: 70px;
+    border-color: #e74c3c;
+    opacity: 0.9;
+  }
+}
+
+/* 13. HIDDEN STATE (for forms, inputs) */
+input:focus ~ .custom-cursor,
+textarea:focus ~ .custom-cursor,
+.custom-cursor.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+/* 14. ANIMATIONS */
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.7;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes spinReverse {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+
+@keyframes zoomInOut {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.3);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translate(-50%, -50%);
+  }
+  50% {
+    transform: translate(-50%, calc(-50% - 5px));
+  }
+}
+
+/* 15. SPECIAL EFFECTS */
+.custom-cursor.bounce {
+  animation: bounce 0.5s ease infinite;
+}
+
+.custom-cursor.vibrate {
+  animation: vibrate 0.1s linear infinite;
+}
+
+@keyframes vibrate {
+  0%, 100% {
+    transform: translate(calc(-50% - 1px), calc(-50% - 1px));
+  }
+  25% {
+    transform: translate(calc(-50% + 1px), calc(-50% - 1px));
+  }
+  50% {
+    transform: translate(calc(-50% + 1px), calc(-50% + 1px));
+  }
+  75% {
+    transform: translate(calc(-50% - 1px), calc(-50% + 1px));
+  }
+}
+
+/* 16. SIZE VARIATIONS */
+.custom-cursor.small {
+  .cursor-dot {
+    width: 4px;
+    height: 4px;
+  }
+  
+  .cursor-outline {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.custom-cursor.large {
+  .cursor-dot {
+    width: 12px;
+    height: 12px;
+  }
+  
+  .cursor-outline {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/* 17. COLOR VARIATIONS */
+.custom-cursor.primary {
+  .cursor-dot {
+    background: #f0a23b;
+  }
+  .cursor-outline {
+    border-color: #f0a23b;
+  }
+}
+
+.custom-cursor.success {
+  .cursor-dot {
+    background: #2ecc71;
+  }
+  .cursor-outline {
+    border-color: #2ecc71;
+  }
+}
+
+.custom-cursor.danger {
+  .cursor-dot {
+    background: #e74c3c;
+  }
+  .cursor-outline {
+    border-color: #e74c3c;
+  }
+}
+
+.custom-cursor.warning {
+  .cursor-dot {
+    background: #f39c12;
+  }
+  .cursor-outline {
+    border-color: #f39c12;
+  }
+}
+
+.custom-cursor.info {
+  .cursor-dot {
+    background: #3498db;
+  }
+  .cursor-outline {
+    border-color: #3498db;
+  }
+}
+
+/* 18. SHAPE VARIATIONS */
+.custom-cursor.square {
+  .cursor-dot {
+    border-radius: 4px;
+    width: 8px;
+    height: 8px;
+  }
+  
+  .cursor-outline {
+    border-radius: 8px;
+    width: 35px;
+    height: 35px;
+  }
+}
+
+.custom-cursor.triangle {
+  .cursor-dot {
+    width: 0;
+    height: 0;
+    background: transparent;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 8px solid #f0a23b;
+    border-radius: 0;
+  }
+  
+  .cursor-outline {
+    width: 0;
+    height: 0;
+    border: none;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 25px solid rgba(240, 162, 59, 0.3);
+  }
+}
+
+/* 19. CUSTOM CURSOR FOR SPECIFIC ELEMENTS */
+/* For images */
+img:hover ~ .custom-cursor {
+  mix-blend-mode: normal;
+  .cursor-dot {
+    background: #9b59b6;
+  }
+  .cursor-outline {
+    border-color: #9b59b6;
+  }
+}
+
+/* For video elements */
+video:hover ~ .custom-cursor,
+.custom-cursor.video-hover {
+  .cursor-dot {
+    background: #e74c3c;
+    width: 12px;
+    height: 12px;
+  }
+  .cursor-outline {
+    border-color: #e74c3c;
+    width: 60px;
+    height: 60px;
+    animation: pulse 2s infinite;
+  }
+}
+
+/* For modal close buttons */
+.custom-close:hover ~ .custom-cursor {
+  .cursor-dot {
+    background: #e74c3c;
+    animation: spin 0.5s linear infinite;
+  }
+  .cursor-outline {
+    border-color: #e74c3c;
+  }
+}
+
+/* 20. PERFORMANCE OPTIMIZATIONS */
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .custom-cursor,
+  .cursor-dot,
+  .cursor-outline {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .cursor-dot {
+    background: #000;
+    box-shadow: 0 0 5px #fff;
+  }
+  .cursor-outline {
+    border-color: #000;
+    box-shadow: 0 0 10px #fff;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .cursor-dot {
+    background: #f0a23b;
+    box-shadow: 0 0 15px rgba(240, 162, 59, 0.8);
+  }
+  .cursor-outline {
+    border-color: #f0a23b;
+    box-shadow: 0 0 20px rgba(240, 162, 59, 0.5);
+  }
+}
+
+/* Light mode support */
+@media (prefers-color-scheme: light) {
+  .cursor-dot {
+    background: #f0a23b;
+  }
+  .cursor-outline {
+    border-color: #f0a23b;
+  }
+}
+
+/* 21. RESPONSIVE ADJUSTMENTS */
+@media (max-width: 768px) {
+  .custom-cursor {
+    transform: scale(0.8);
+  }
+}
+
+@media (max-width: 480px) {
+  .custom-cursor {
+    transform: scale(0.6);
+  }
+}
+
+/* 22. FALLBACK FOR JS DISABLED */
+.no-js .custom-cursor {
+  display: none !important;
+}
+
+.no-js * {
+  cursor: auto !important;
+}

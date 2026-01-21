@@ -1,0 +1,27 @@
+
+    :root {
+      --heading-color: #c9a961;
+      --accent-color: #b8941e;
+    }
+
+    /* Title */
+    .login-title {
+      color: var(--heading-color);
+      font-weight: 600;
+    }
+
+    /* Button primary */
+    .btn-primary {
+      background-color: var(--accent-color) !important;
+      border-color: var(--accent-color) !important;
+      color: #fff !important;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus,
+    .btn-primary:active {
+      background-color: #a88417 !important;
+      border-color: #a88417 !important;
+      color: #fff !important;
+      box-shadow: 0 4px 12px rgba(184, 148, 30, 0.4);
+    }

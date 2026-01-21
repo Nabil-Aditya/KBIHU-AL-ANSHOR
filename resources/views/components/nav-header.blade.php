@@ -1,0 +1,38 @@
+<header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+        <a href="" class="logo d-flex align-items-center me-auto">
+            <img src="{{ asset('assets/img/kemenhaj.png') }}" alt="Logo Kemenhaj" class="logo-img"
+                style="max-height: 50px;">
+            <div class="logo-text">
+                <h1>
+                    <span class="logo-text-full">Kementerian Haji dan Umrah</span>
+                    <span class="logo-text-short">Kemenhaj</span>
+                </h1>
+                <span class="subtitle" style="color: #b8941e; font-size: 1.0625rem;">Kota Batam</span>
+            </div>
+        </a>
+
+        <nav id="navmenu" class="navmenu">
+            <ul>
+                <li><a href="#hero" class="active">Beranda<br></a></li>
+                <li class="dropdown"><a href="#"><span>Profil</span> <i
+                            class="bi bi-chevron-down toggle-dropdown"></i></a>
+                    <ul>
+                        <li><a href="#">Pejabat</a></li>
+                        <li><a href="#">Tugas & Fungsi</a></li>
+                        <li><a href="#">Visi & Misi</a></li>
+                        <li><a href="#">Sejarah</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Layanan</a></li>
+                <li><a href="#">Data & Informasi</a></li>
+                <li><a href="#">Galeri</a></li>
+                <li><a href="#">Berita</a></li>
+
+            </ul>
+            <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+
+    </div>
+</header>

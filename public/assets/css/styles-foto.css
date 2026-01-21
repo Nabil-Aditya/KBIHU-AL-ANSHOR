@@ -1,0 +1,88 @@
+/* Foto Card Styles with Border Radius and Hover Effect */
+.foto-card {
+    cursor: pointer;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    background: #fff;
+}
+
+.foto-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+}
+
+.foto-img {
+    position: relative;
+    overflow: hidden;
+    height: 300px;
+    border-radius: 15px;
+}
+
+.foto-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.foto-card:hover .foto-img img {
+    transform: scale(1.15);
+}
+
+.foto-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    border-radius: 15px;
+}
+
+.foto-card:hover .foto-overlay {
+    opacity: 1;
+}
+
+.foto-overlay i {
+    font-size: 4rem;
+    color: white;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Modal Styles */
+#fotoModal .modal-content {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+#fotoModal .modal-body img {
+    max-height: 500px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+#fotoModal .modal-header {
+    padding: 1rem 1.5rem 0.5rem;
+}
+
+#fotoModal .btn-close {
+    padding: 0.5rem;
+    background-size: 1.2rem;
+}
