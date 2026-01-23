@@ -2,14 +2,17 @@
 <aside class="left-sidebar">
   <!-- Sidebar scroll-->
   <div>
-    <div class="brand-logo d-flex align-items-center justify-content-between">
-      <a href="{{ route('admin.dashboard') }}" class="text-nowrap logo-img">
-        <img src="{{ asset('assets/img/kemenhaj-batam.png') }}" width="200" alt="Logo Kemenag" class="mt-4" />
-      </a>
-      <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
-        <i class="ti ti-x fs-8"></i>
-      </div>
-    </div>
+ <div class="brand-logo d-flex align-items-center justify-content-center position-relative">
+
+  <a href="{{ route('admin.dashboard') }}" class="text-nowrap logo-img mx-auto">
+    <img src="{{ asset('assets/img/AlAnshor.jpg') }}" width="170" alt="Logo Kemenag"/>
+  </a>
+
+  <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer ms-auto" id="sidebarCollapse">
+    <i class="ti ti-x fs-8"></i>
+  </div>
+
+</div>
 
     <!-- Sidebar navigation-->
     <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
@@ -58,7 +61,7 @@
         </li>
         <li class="sidebar-item {{ request()->routeIs('admin.doa.*') ? 'active' : '' }}">
           <a class="sidebar-link" href="{{ route('admin.doa.index') }}" aria-expanded="false">
-            <span><i class="ti ti-chart-infographic"></i></span>
+            <span><i class="ti ti-book"></i></span>
             <span class="hide-menu">Kelola Doa</span>
           </a>
         </li>
