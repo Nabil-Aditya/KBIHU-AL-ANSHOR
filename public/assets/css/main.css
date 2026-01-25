@@ -157,6 +157,7 @@ h6 {
   padding: 20px 0;
   transition: all 0.5s;
   z-index: 997;
+  border-radius: 0 0 30px 30px;
 }
 
 .header .logo {
