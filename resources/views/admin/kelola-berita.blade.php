@@ -160,10 +160,14 @@
                 </tr>
               @empty
                 <tr>
+                <tr>
                   <td colspan="8" class="text-center py-5">
-                    <img src="{{ asset('assets/images/backgrounds/no-data.svg') }}" alt="No Data" width="200" class="mb-3">
+                    <div class="mb-3">
+                      <i class="ti ti-news" style="font-size: 50px; color: #ddd;"></i>
+                    </div>
                     <p class="text-muted">Belum ada data berita</p>
                   </td>
+                </tr>
                 </tr>
               @endforelse
             </tbody>
@@ -437,60 +441,60 @@
 
             // Populate form
             contentDiv.innerHTML = `
-            <div class="mb-3">
-              <label class="form-label">Judul Berita <span class="text-danger">*</span></label>
-              <input type="text" class="form-control" name="judul" value="${escapeHtml(data.judul)}" required>
-            </div>
+                <div class="mb-3">
+                  <label class="form-label">Judul Berita <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" name="judul" value="${escapeHtml(data.judul)}" required>
+                </div>
 
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <label class="form-label">Kategori <span class="text-danger">*</span></label>
-                <select class="form-select" name="kategori" required>
-                  <option value="">Pilih Kategori</option>
-                  <option value="kegiatan" ${data.kategori === 'kegiatan' ? 'selected' : ''}>Kegiatan</option>
-                  <option value="pengumuman" ${data.kategori === 'pengumuman' ? 'selected' : ''}>Pengumuman</option>
-                  <option value="artikel" ${data.kategori === 'artikel' ? 'selected' : ''}>Artikel</option>
-                </select>
-              </div>
-              <div class="col-md-6 mb-3">
-                <label class="form-label">Tanggal <span class="text-danger">*</span></label>
-                <input type="date" class="form-control" name="tanggal" value="${data.tanggal}" required>
-              </div>
-            </div>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Kategori <span class="text-danger">*</span></label>
+                    <select class="form-select" name="kategori" required>
+                      <option value="">Pilih Kategori</option>
+                      <option value="kegiatan" ${data.kategori === 'kegiatan' ? 'selected' : ''}>Kegiatan</option>
+                      <option value="pengumuman" ${data.kategori === 'pengumuman' ? 'selected' : ''}>Pengumuman</option>
+                      <option value="artikel" ${data.kategori === 'artikel' ? 'selected' : ''}>Artikel</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Tanggal <span class="text-danger">*</span></label>
+                    <input type="date" class="form-control" name="tanggal" value="${data.tanggal}" required>
+                  </div>
+                </div>
 
-            <div class="mb-3">
-              <label class="form-label">Excerpt/Ringkasan</label>
-              <textarea class="form-control" name="excerpt" rows="2" maxlength="200">${escapeHtml(data.excerpt || '')}</textarea>
-              <small class="text-muted">Maksimal 200 karakter</small>
-            </div>
+                <div class="mb-3">
+                  <label class="form-label">Excerpt/Ringkasan</label>
+                  <textarea class="form-control" name="excerpt" rows="2" maxlength="200">${escapeHtml(data.excerpt || '')}</textarea>
+                  <small class="text-muted">Maksimal 200 karakter</small>
+                </div>
 
-            <div class="mb-3">
-              <label class="form-label">Konten <span class="text-danger">*</span></label>
-              <textarea class="form-control" name="konten" rows="5" required>${escapeHtml(data.konten)}</textarea>
-            </div>
+                <div class="mb-3">
+                  <label class="form-label">Konten <span class="text-danger">*</span></label>
+                  <textarea class="form-control" name="konten" rows="5" required>${escapeHtml(data.konten)}</textarea>
+                </div>
 
-            <div class="mb-3">
-              <label class="form-label">Gambar</label>
-              <input type="file" class="form-control" name="gambar" accept="image/*" onchange="previewImage(this, 'previewEdit')">
-              <small class="text-muted">Kosongkan jika tidak ingin mengubah gambar. Format: JPG, PNG, JPEG. Maksimal 2MB</small>
-              <div class="mt-2">
-                <img id="previewEdit" src="{{ asset('storage') }}/${data.gambar}" alt="Current Image" style="max-width: 200px;" class="rounded">
-              </div>
-            </div>
+                <div class="mb-3">
+                  <label class="form-label">Gambar</label>
+                  <input type="file" class="form-control" name="gambar" accept="image/*" onchange="previewImage(this, 'previewEdit')">
+                  <small class="text-muted">Kosongkan jika tidak ingin mengubah gambar. Format: JPG, PNG, JPEG. Maksimal 2MB</small>
+                  <div class="mt-2">
+                    <img id="previewEdit" src="{{ asset('storage') }}/${data.gambar}" alt="Current Image" style="max-width: 200px;" class="rounded">
+                  </div>
+                </div>
 
-            <div class="mb-3">
-              <label class="form-label">Penulis</label>
-              <input type="text" class="form-control" name="penulis" value="${escapeHtml(data.penulis)}" readonly>
-            </div>
+                <div class="mb-3">
+                  <label class="form-label">Penulis</label>
+                  <input type="text" class="form-control" name="penulis" value="${escapeHtml(data.penulis)}" readonly>
+                </div>
 
-            <div class="mb-3">
-              <label class="form-label">Status <span class="text-danger">*</span></label>
-              <select class="form-select" name="status" required>
-                <option value="draft" ${data.status === 'draft' ? 'selected' : ''}>Draft</option>
-                <option value="published" ${data.status === 'published' ? 'selected' : ''}>Published</option>
-              </select>
-            </div>
-          `;
+                <div class="mb-3">
+                  <label class="form-label">Status <span class="text-danger">*</span></label>
+                  <select class="form-select" name="status" required>
+                    <option value="draft" ${data.status === 'draft' ? 'selected' : ''}>Draft</option>
+                    <option value="published" ${data.status === 'published' ? 'selected' : ''}>Published</option>
+                  </select>
+                </div>
+              `;
 
             // Hide loading and show content
             loadingDiv.style.display = 'none';
@@ -499,12 +503,12 @@
           .catch(error => {
             console.error('Error detail:', error);
             contentDiv.innerHTML = `
-            <div class="alert alert-danger">
-              <i class="ti ti-alert-circle"></i> Gagal memuat data: ${error.message}
-              <br><small>URL: ${baseUrl}/${id}/edit</small>
-              <br><small>Cek console browser (F12) untuk detail</small>
-            </div>
-          `;
+                <div class="alert alert-danger">
+                  <i class="ti ti-alert-circle"></i> Gagal memuat data: ${error.message}
+                  <br><small>URL: ${baseUrl}/${id}/edit</small>
+                  <br><small>Cek console browser (F12) untuk detail</small>
+                </div>
+              `;
             loadingDiv.style.display = 'none';
             contentDiv.style.display = 'block';
           });
@@ -553,44 +557,44 @@
             const kategoriBadge = `<span class="badge bg-primary">${data.kategori.charAt(0).toUpperCase() + data.kategori.slice(1)}</span>`;
 
             contentDiv.innerHTML = `
-            <div class="text-center mb-4">
-              <img src="{{ asset('storage') }}/${data.gambar}" alt="${escapeHtml(data.judul)}" class="img-fluid rounded" style="max-height: 400px;">
-            </div>
+                <div class="text-center mb-4">
+                  <img src="{{ asset('storage') }}/${data.gambar}" alt="${escapeHtml(data.judul)}" class="img-fluid rounded" style="max-height: 400px;">
+                </div>
 
-            <div class="mb-3">
-              <h4 class="fw-bold">${escapeHtml(data.judul)}</h4>
-            </div>
+                <div class="mb-3">
+                  <h4 class="fw-bold">${escapeHtml(data.judul)}</h4>
+                </div>
 
-            <div class="d-flex gap-2 mb-3">
-              ${kategoriBadge}
-              ${statusBadge}
-            </div>
+                <div class="d-flex gap-2 mb-3">
+                  ${kategoriBadge}
+                  ${statusBadge}
+                </div>
 
-            <div class="row mb-3">
-              <div class="col-md-6">
-                <small class="text-muted">
-                  <i class="ti ti-user"></i> ${escapeHtml(data.penulis)}
-                </small>
-              </div>
-              <div class="col-md-6 text-end">
-                <small class="text-muted">
-                  <i class="ti ti-calendar"></i> ${formattedDate}
-                </small>
-              </div>
-            </div>
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <small class="text-muted">
+                      <i class="ti ti-user"></i> ${escapeHtml(data.penulis)}
+                    </small>
+                  </div>
+                  <div class="col-md-6 text-end">
+                    <small class="text-muted">
+                      <i class="ti ti-calendar"></i> ${formattedDate}
+                    </small>
+                  </div>
+                </div>
 
-            ${data.excerpt ? `
-            <div class="mb-3">
-              <h6 class="fw-semibold">Ringkasan:</h6>
-              <p class="text-muted">${escapeHtml(data.excerpt)}</p>
-            </div>
-            ` : ''}
+                ${data.excerpt ? `
+                <div class="mb-3">
+                  <h6 class="fw-semibold">Ringkasan:</h6>
+                  <p class="text-muted">${escapeHtml(data.excerpt)}</p>
+                </div>
+                ` : ''}
 
-            <div class="mb-3">
-              <h6 class="fw-semibold">Konten:</h6>
-              <div style="white-space: pre-wrap;">${escapeHtml(data.konten)}</div>
-            </div>
-          `;
+                <div class="mb-3">
+                  <h6 class="fw-semibold">Konten:</h6>
+                  <div style="white-space: pre-wrap;">${escapeHtml(data.konten)}</div>
+                </div>
+              `;
 
             // Hide loading and show content
             loadingDiv.style.display = 'none';
@@ -599,12 +603,12 @@
           .catch(error => {
             console.error('Error detail:', error);
             contentDiv.innerHTML = `
-            <div class="alert alert-danger">
-              <i class="ti ti-alert-circle"></i> Gagal memuat data: ${error.message}
-              <br><small>URL: ${baseUrl}/${id}</small>
-              <br><small>Cek console browser (F12) untuk detail</small>
-            </div>
-          `;
+                <div class="alert alert-danger">
+                  <i class="ti ti-alert-circle"></i> Gagal memuat data: ${error.message}
+                  <br><small>URL: ${baseUrl}/${id}</small>
+                  <br><small>Cek console browser (F12) untuk detail</small>
+                </div>
+              `;
             loadingDiv.style.display = 'none';
             contentDiv.style.display = 'block';
           });

@@ -111,12 +111,14 @@
                 <tr data-kategori="{{ $video->kategori }}" data-status="{{ $video->status }}">
                   <td>{{ $videos->firstItem() + $index }}</td>
                   <td>
-                    @if(!empty($video->thumbnail_url))
+                    @if($video->thumbnail_url)
                       <img src="{{ $video->thumbnail_url }}" alt="{{ $video->judul }}" class="rounded" width="80" height="60"
-                        style="object-fit: cover;">
+                        style="object-fit: cover;"
+                        onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'bg-light-secondary d-flex align-items-center justify-content-center rounded\' style=\'width:80px;height:60px;\'><i class=\'ti ti-video fs-2 text-secondary\'></i></div>';">
                     @else
-                      <div class="no-image-icon-sm">
-                        <i class="bi bi-camera-video"></i>
+                      <div class="bg-light-secondary d-flex align-items-center justify-content-center rounded"
+                        style="width: 80px; height: 60px;">
+                        <i class="ti ti-video fs-2 text-secondary"></i>
                       </div>
                     @endif
                   </td>
@@ -168,7 +170,9 @@
               @empty
                 <tr>
                   <td colspan="8" class="text-center py-5">
-                    <img src="{{ asset('assets/images/backgrounds/no-data.svg') }}" alt="No Data" width="200" class="mb-3">
+                     <div class="mb-3">
+                      <i class="ti ti-video" style="font-size: 50px; color: #ddd;"></i>
+                    </div>
                     <p class="text-muted">Belum ada data video</p>
                   </td>
                 </tr>
@@ -466,65 +470,65 @@
 
             const thumbnailPreview = data.thumbnail_url ?
               `<div class="mt-2">
-              <img id="previewEdit" src="${data.thumbnail_url}" alt="Current Thumbnail" style="max-width: 200px;" class="rounded">
-            </div>` : '';
+                  <img id="previewEdit" src="${data.thumbnail_url}" alt="Current Thumbnail" style="max-width: 200px;" class="rounded">
+                </div>` : '';
 
             contentDiv.innerHTML = `
-            <div class="mb-3">
-              <label class="form-label">Judul Video <span class="text-danger">*</span></label>
-              <input type="text" class="form-control" name="judul" value="${escapeHtml(data.judul)}" required>
-            </div>
+                <div class="mb-3">
+                  <label class="form-label">Judul Video <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" name="judul" value="${escapeHtml(data.judul)}" required>
+                </div>
 
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <label class="form-label">Kategori <span class="text-danger">*</span></label>
-                <select class="form-select" name="kategori" required>
-                  <option value="">Pilih Kategori</option>
-                  <option value="kegiatan" ${data.kategori === 'kegiatan' ? 'selected' : ''}>Kegiatan</option>
-                  <option value="pengumuman" ${data.kategori === 'pengumuman' ? 'selected' : ''}>Pengumuman</option>
-                  <option value="tutorial" ${data.kategori === 'tutorial' ? 'selected' : ''}>Tutorial</option>
-                  <option value="dokumentasi" ${data.kategori === 'dokumentasi' ? 'selected' : ''}>Dokumentasi</option>
-                </select>
-              </div>
-              <div class="col-md-6 mb-3">
-                <label class="form-label">Tipe Video <span class="text-danger">*</span></label>
-                <select class="form-select" name="video_type" id="videoTypeEdit" required onchange="toggleVideoInput('Edit')">
-                  <option value="">Pilih Tipe</option>
-                  <option value="youtube" ${data.video_type === 'youtube' ? 'selected' : ''}>YouTube</option>
-                  <option value="file" ${data.video_type === 'file' ? 'selected' : ''}>Upload File</option>
-                </select>
-              </div>
-            </div>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Kategori <span class="text-danger">*</span></label>
+                    <select class="form-select" name="kategori" required>
+                      <option value="">Pilih Kategori</option>
+                      <option value="kegiatan" ${data.kategori === 'kegiatan' ? 'selected' : ''}>Kegiatan</option>
+                      <option value="pengumuman" ${data.kategori === 'pengumuman' ? 'selected' : ''}>Pengumuman</option>
+                      <option value="tutorial" ${data.kategori === 'tutorial' ? 'selected' : ''}>Tutorial</option>
+                      <option value="dokumentasi" ${data.kategori === 'dokumentasi' ? 'selected' : ''}>Dokumentasi</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Tipe Video <span class="text-danger">*</span></label>
+                    <select class="form-select" name="video_type" id="videoTypeEdit" required onchange="toggleVideoInput('Edit')">
+                      <option value="">Pilih Tipe</option>
+                      <option value="youtube" ${data.video_type === 'youtube' ? 'selected' : ''}>YouTube</option>
+                      <option value="file" ${data.video_type === 'file' ? 'selected' : ''}>Upload File</option>
+                    </select>
+                  </div>
+                </div>
 
-            <div class="mb-3" id="youtubeInputEdit" style="display: ${data.video_type === 'youtube' ? 'block' : 'none'};">
-              <label class="form-label">URL YouTube</label>
-              <input type="text" class="form-control" name="video_url" value="${escapeHtml(data.video_url || '')}" 
-                     placeholder="https://www.youtube.com/watch?v=...">
-              <small class="text-muted">Contoh: https://www.youtube.com/watch?v=xxxxx atau https://youtu.be/xxxxx</small>
-            </div>
+                <div class="mb-3" id="youtubeInputEdit" style="display: ${data.video_type === 'youtube' ? 'block' : 'none'};">
+                  <label class="form-label">URL YouTube</label>
+                  <input type="text" class="form-control" name="video_url" value="${escapeHtml(data.video_url || '')}" 
+                         placeholder="https://www.youtube.com/watch?v=...">
+                  <small class="text-muted">Contoh: https://www.youtube.com/watch?v=xxxxx atau https://youtu.be/xxxxx</small>
+                </div>
 
-            <div class="mb-3" id="fileInputEdit" style="display: ${data.video_type === 'file' ? 'block' : 'none'};">
-              <label class="form-label">File Video</label>
-              <input type="file" class="form-control" name="video_file" accept="video/*">
-              <small class="text-muted">Format: MP4, AVI, MOV, WMV. Maksimal 50MB. Kosongkan jika tidak ingin mengubah video.</small>
-              ${data.video_type === 'file' ? `<small class="text-info d-block mt-1">Video saat ini: ${escapeHtml(data.video_url)}</small>` : ''}
-            </div>
+                <div class="mb-3" id="fileInputEdit" style="display: ${data.video_type === 'file' ? 'block' : 'none'};">
+                  <label class="form-label">File Video</label>
+                  <input type="file" class="form-control" name="video_file" accept="video/*">
+                  <small class="text-muted">Format: MP4, AVI, MOV, WMV. Maksimal 50MB. Kosongkan jika tidak ingin mengubah video.</small>
+                  ${data.video_type === 'file' ? `<small class="text-info d-block mt-1">Video saat ini: ${escapeHtml(data.video_url)}</small>` : ''}
+                </div>
 
-            <div class="mb-3">
-              <label class="form-label">Thumbnail (Opsional)</label>
-              <input type="file" class="form-control" name="thumbnail" accept="image/*" onchange="previewImage(this, 'previewEdit')">
-              <small class="text-muted">Kosongkan jika tidak ingin mengubah thumbnail. Format: JPG, PNG, JPEG. Maksimal 2MB</small>
-              ${thumbnailPreview}
-            </div>
+                <div class="mb-3">
+                  <label class="form-label">Thumbnail (Opsional)</label>
+                  <input type="file" class="form-control" name="thumbnail" accept="image/*" onchange="previewImage(this, 'previewEdit')">
+                  <small class="text-muted">Kosongkan jika tidak ingin mengubah thumbnail. Format: JPG, PNG, JPEG. Maksimal 2MB</small>
+                  ${thumbnailPreview}
+                </div>
 
-            <div class="mb-3">
-              <label class="form-label">Status <span class="text-danger">*</span></label>
-              <select class="form-select" name="status" required>
-                <option value="draft" ${data.status === 'draft' ? 'selected' : ''}>Draft</option>
-                <option value="published" ${data.status === 'published' ? 'selected' : ''}>Published</option>
-              </select>
-            </div>
-          `;
+                <div class="mb-3">
+                  <label class="form-label">Status <span class="text-danger">*</span></label>
+                  <select class="form-select" name="status" required>
+                    <option value="draft" ${data.status === 'draft' ? 'selected' : ''}>Draft</option>
+                    <option value="published" ${data.status === 'published' ? 'selected' : ''}>Published</option>
+                  </select>
+                </div>
+              `;
 
             loadingDiv.style.display = 'none';
             contentDiv.style.display = 'block';
@@ -532,10 +536,10 @@
           .catch(error => {
             console.error('Error:', error);
             contentDiv.innerHTML = `
-            <div class="alert alert-danger">
-              <i class="ti ti-alert-circle"></i> Gagal memuat data: ${error.message}
-            </div>
-          `;
+                <div class="alert alert-danger">
+                  <i class="ti ti-alert-circle"></i> Gagal memuat data: ${error.message}
+                </div>
+              `;
             loadingDiv.style.display = 'none';
             contentDiv.style.display = 'block';
           });
@@ -578,54 +582,54 @@
             let videoPlayer = '';
             if (data.video_type === 'youtube' && data.embed_url) {
               videoPlayer = `
-              <div class="ratio ratio-16x9 mb-4">
-                <iframe src="${data.embed_url}" allowfullscreen></iframe>
-              </div>
-            `;
+                  <div class="ratio ratio-16x9 mb-4">
+                    <iframe src="${data.embed_url}" allowfullscreen></iframe>
+                  </div>
+                `;
             } else if (data.video_type === 'file') {
               videoPlayer = `
-              <div class="mb-4">
-                <video controls class="w-100" style="max-height: 500px;">
-                  <source src="{{ asset('storage') }}/${data.video_url}" type="video/mp4">
-                  Browser Anda tidak mendukung video tag.
-                </video>
-              </div>
-            `;
+                  <div class="mb-4">
+                    <video controls class="w-100" style="max-height: 500px;">
+                      <source src="{{ asset('storage') }}/${data.video_url}" type="video/mp4">
+                      Browser Anda tidak mendukung video tag.
+                    </video>
+                  </div>
+                `;
             }
 
             contentDiv.innerHTML = `
-            ${videoPlayer}
+                ${videoPlayer}
 
-            <div class="mb-3">
-              <h4 class="fw-bold">${escapeHtml(data.judul)}</h4>
-            </div>
+                <div class="mb-3">
+                  <h4 class="fw-bold">${escapeHtml(data.judul)}</h4>
+                </div>
 
-            <div class="d-flex gap-2 mb-3">
-              ${kategoriBadge}
-              ${typeBadge}
-              ${statusBadge}
-            </div>
+                <div class="d-flex gap-2 mb-3">
+                  ${kategoriBadge}
+                  ${typeBadge}
+                  ${statusBadge}
+                </div>
 
-            <div class="row mb-3">
-              <div class="col-md-6">
-                <small class="text-muted">
-                  <i class="ti ti-calendar"></i> ${data.created_at}
-                </small>
-              </div>
-              ${data.video_type === 'youtube' ? `
-              <div class="col-md-6 text-end">
-                <a href="${escapeHtml(data.video_url)}" target="_blank" class="btn btn-sm btn-outline-danger">
-                  <i class="ti ti-brand-youtube"></i> Lihat di YouTube
-                </a>
-              </div>
-              ` : ''}
-            </div>
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <small class="text-muted">
+                      <i class="ti ti-calendar"></i> ${data.created_at}
+                    </small>
+                  </div>
+                  ${data.video_type === 'youtube' ? `
+                  <div class="col-md-6 text-end">
+                    <a href="${escapeHtml(data.video_url)}" target="_blank" class="btn btn-sm btn-outline-danger">
+                      <i class="ti ti-brand-youtube"></i> Lihat di YouTube
+                    </a>
+                  </div>
+                  ` : ''}
+                </div>
 
-            <div class="mb-3">
-              <h6 class="fw-semibold">Thumbnail:</h6>
-              <img src="${data.thumbnail_url}" alt="Thumbnail" class="img-fluid rounded" style="max-width: 300px;">
-            </div>
-          `;
+                <div class="mb-3">
+                  <h6 class="fw-semibold">Thumbnail:</h6>
+                  <img src="${data.thumbnail_url}" alt="Thumbnail" class="img-fluid rounded" style="max-width: 300px;">
+                </div>
+              `;
 
             loadingDiv.style.display = 'none';
             contentDiv.style.display = 'block';
@@ -633,10 +637,10 @@
           .catch(error => {
             console.error('Error:', error);
             contentDiv.innerHTML = `
-            <div class="alert alert-danger">
-              <i class="ti ti-alert-circle"></i> Gagal memuat data: ${error.message}
-            </div>
-          `;
+                <div class="alert alert-danger">
+                  <i class="ti ti-alert-circle"></i> Gagal memuat data: ${error.message}
+                </div>
+              `;
             loadingDiv.style.display = 'none';
             contentDiv.style.display = 'block';
           });

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Kementerian Haji dan Umrah Kota Batam</title>
+    <title>KBIHU AL-ANSHOR</title>
     <meta name="description" content="Website resmi Kementerian Haji dan Umrah Kota Batam">
     <meta name="keywords" content="haji, umrah, batam, kemenhaj, kementerian haji">
 
@@ -12,8 +12,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Favicons -->
-    <link href="{{ asset('assets/img/kemenhaj.png') }}" rel="icon">
-    <link href="{{ asset('assets/img/kemenhaj.png') }}" rel="apple-touch-icon">
+    <link href="{{ asset('assets/img/icon-logo.png') }}" rel="icon">
+    <link href="{{ asset('assets/img/icon-logo.png') }}" rel="apple-touch-icon">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">

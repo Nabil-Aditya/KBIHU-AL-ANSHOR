@@ -2,6 +2,25 @@
 
 @section('title', 'Kelola Foto')
 
+@push('styles')
+<style>
+.no-image-icon-sm {
+    width: 80px;
+    height: 60px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.375rem;
+}
+
+.no-image-icon-sm i {
+    font-size: 28px;
+    color: white;
+}
+</style>
+@endpush
+
 @section('content')
   <div class="container-fluid">
     <!-- Header Section -->
@@ -110,16 +129,23 @@
                 <tr data-kategori="{{ $foto->kategori }}" data-status="{{ $foto->status }}">
                   <td>{{ $fotos->firstItem() + $index }}</td>
                   <td>
-                    @if(!empty($foto->foto) && file_exists(public_path('storage/' . $foto->foto)))
-                      <img src="{{ asset('storage/' . $foto->foto) }}" alt="{{ $foto->judul }}" class="rounded" width="80"
-                        height="60" style="object-fit: cover;">
+                    @if($foto->foto_url)
+                      <img src="{{ $foto->foto_url }}" 
+                           alt="{{ $foto->judul }}" 
+                           class="rounded" 
+                           width="80" 
+                           height="60"
+                           style="object-fit: cover;"
+                           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                      <div class="no-image-icon-sm" style="display: none;">
+                        <i class="ti ti-photo"></i>
+                      </div>
                     @else
                       <div class="no-image-icon-sm">
-                        <i class="bi bi-image"></i>
+                        <i class="ti ti-photo"></i>
                       </div>
                     @endif
                   </td>
-
                   <td>
                     <div class="d-flex flex-column">
                       <span class="fw-semibold">{{ Str::limit($foto->judul, 50) }}</span>
@@ -161,7 +187,9 @@
               @empty
                 <tr>
                   <td colspan="7" class="text-center py-5">
-                    <img src="{{ asset('assets/images/backgrounds/no-data.svg') }}" alt="No Data" width="200" class="mb-3">
+                   <div class="mb-3">
+                      <i class="ti ti-photo" style="font-size: 50px; color: #ddd;"></i>
+                    </div>
                     <p class="text-muted">Belum ada data foto</p>
                   </td>
                 </tr>

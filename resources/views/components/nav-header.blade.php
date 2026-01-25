@@ -2,14 +2,14 @@
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
         <a href="" class="logo d-flex align-items-center me-auto">
-            <img src="{{ asset('assets/img/kemenhaj.png') }}" alt="Logo Kemenhaj" class="logo-img"
+            <img src="{{ asset('assets/img/no-bg-logo.png') }}" alt="Logo KBIHU Al-ANSHOR" class="logo-img"
                 style="max-height: 50px;">
             <div class="logo-text">
                 <h1>
-                    <span class="logo-text-full">Kementerian Haji dan Umrah</span>
-                    <span class="logo-text-short">Kemenhaj</span>
+                    <span class="logo-text-full">KBIHU Al-ANSHOR</span>
+                    <span class="logo-text-short">AL-ANSHOR</span>
                 </h1>
-                <span class="subtitle" style="color: #b8941e; font-size: 1.0625rem;">Kota Batam</span>
+                <span class="subtitle" style="color: #866749; font-size: 1.0625rem;">Kota Batam</span>
             </div>
         </a>
 

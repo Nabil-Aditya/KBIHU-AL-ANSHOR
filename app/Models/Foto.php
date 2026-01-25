@@ -10,11 +10,6 @@ class Foto extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'judul',
         'kategori',
@@ -22,35 +17,32 @@ class Foto extends Model
         'status',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
 
     /**
-     * Get the full URL for the foto.
-     *
-     * @return string
+     * Get the full URL for the foto
      */
     public function getFotoUrlAttribute()
     {
-        if ($this->foto && Storage::disk('public')->exists($this->foto)) {
-            return asset('storage/' . $this->foto);
+        if ($this->foto) {
+            // Clean path (remove any 'storage/' or 'public/' prefix if exists)
+            $path = str_replace(['storage/', 'public/'], '', $this->foto);
+            
+            // Check if file exists
+            if (Storage::disk('public')->exists($path)) {
+                return asset('storage/' . $path);
+            }
         }
         
-        // Return default image if foto doesn't exist
-    return null;
+        // Return placeholder if foto doesn't exist
+        return asset('assets/images/backgrounds/placeholder-image.png');
     }
 
     /**
-     * Get formatted date for display.
-     *
-     * @return string
+     * Get formatted date for display
      */
     public function getFormattedDateAttribute()
     {
@@ -58,9 +50,7 @@ class Foto extends Model
     }
 
     /**
-     * Get formatted date time for display.
-     *
-     * @return string
+     * Get formatted date time for display
      */
     public function getFormattedDateTimeAttribute()
     {
@@ -68,10 +58,7 @@ class Foto extends Model
     }
 
     /**
-     * Scope a query to only include published fotos.
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @return \Illuminate\Database\Eloquent\Builder
+     * Scope a query to only include published fotos
      */
     public function scopePublished($query)
     {
@@ -79,10 +66,7 @@ class Foto extends Model
     }
 
     /**
-     * Scope a query to only include draft fotos.
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @return \Illuminate\Database\Eloquent\Builder
+     * Scope a query to only include draft fotos
      */
     public function scopeDraft($query)
     {
@@ -90,11 +74,7 @@ class Foto extends Model
     }
 
     /**
-     * Scope a query to filter by kategori.
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @param  string  $kategori
-     * @return \Illuminate\Database\Eloquent\Builder
+     * Scope a query to filter by kategori
      */
     public function scopeKategori($query, $kategori)
     {
@@ -102,9 +82,7 @@ class Foto extends Model
     }
 
     /**
-     * Get the file size in human readable format.
-     *
-     * @return string|null
+     * Get the file size in human readable format
      */
     public function getFileSizeAttribute()
     {
@@ -124,7 +102,7 @@ class Foto extends Model
     }
 
     /**
-     * Boot the model.
+     * Boot the model
      */
     protected static function boot()
     {

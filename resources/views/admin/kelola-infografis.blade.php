@@ -155,7 +155,9 @@
               @empty
                 <tr>
                   <td colspan="7" class="text-center py-5">
-                    <img src="{{ asset('assets/images/backgrounds/no-data.svg') }}" alt="No Data" width="200" class="mb-3">
+                      <div class="mb-3">
+                      <i class="ti ti-chart-infographic" style="font-size: 50px; color: #ddd;"></i>
+                    </div>
                     <p class="text-muted">Belum ada data infografis</p>
                   </td>
                 </tr>

@@ -35,74 +35,56 @@
     display: none;
 }
 
-/* Hero Section with Video Background */
-.hero {
-    position: relative;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    margin-top: 0;
-}
+.floating-img {
+    animation: float 3s ease-in-out infinite;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    /* bayangan biar timbul */
+    border-radius: 15px;
+    /* opsional: biar ada sudut melengkung */
+    transition: transform 0.3s ease;
+  }
 
-.hero-video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    transform: translate(-50%, -50%);
-    z-index: 0;
-    object-fit: cover;
-}
 
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(50, 50, 50, 0.3) 100%);
-    z-index: 1;
-}
+  /* Animasi naik-turun */
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
 
-.hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 30px;
-    color: white;
-}
+    50% {
+      transform: translateY(-15px);
+    }
 
-.hero h1 {
-    font-size: 48px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    animation: fadeInUp 1s ease;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    color: #f0a23b;
-}
+    100% {
+      transform: translateY(0px);
+    }
+  }
 
-.hero p {
+  .floating-icon {
+    display: inline-block;
+    /* wajib supaya transform jalan */
+    color: #866749;
     font-size: 24px;
-    margin-bottom: 30px;
-    animation: fadeInUp 1s ease 0.2s both;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-    color: #e0e0e0;
-}
+    animation: floatIcon 3s ease-in-out infinite;
+  }
 
-.hero-buttons {
-    display: flex;
-    gap: 20px;
-    animation: fadeInUp 1s ease 0.4s both;
-    flex-wrap: wrap;
-}
+  /* Animasi naik turun */
+  @keyframes floatIcon {
+    0% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-7px);
+    }
+
+    100% {
+      transform: translateY(0);
+    }
+  }
 
 .btn-primary {
-    background: #c9a961;
+    background: #866749;
     color: white;
     padding: 15px 40px;
     border-radius: 50px;
@@ -114,7 +96,7 @@
 }
 
 .btn-primary:hover {
-    background: #c9a961;
+    background: #866749;
     transform: translateY(-3px);
     box-shadow: 0 10px 25px rgba(39, 40, 46, 0.5);
     color: white;
