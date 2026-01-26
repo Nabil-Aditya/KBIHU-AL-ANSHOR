@@ -26,6 +26,7 @@
                     </ul>
                 </li>
                 <li><a href="#">Layanan</a></li>
+                <li><a href="{{ route('doa') }}">Doa</a></li>
                 <li><a href="#">Data & Informasi</a></li>
                 <li><a href="#">Galeri</a></li>
                 <li><a href="#">Berita</a></li>

@@ -55,6 +55,10 @@ Route::get('/starter', function () {
     return view('starter-page');
 });
 
+Route::get('/doa', function () {
+    return view('doa');
+})->name('doa');
+
 // Authentication routes
 Route::middleware('guest')->group(function () {
     Route::get('/internal/login', [AuthController::class, 'showLoginForm'])->name('login');
