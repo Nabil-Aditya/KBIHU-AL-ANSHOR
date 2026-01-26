@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\DoaController;
+use App\Http\Controllers\DoaPublicController;
 use App\Http\Controllers\Admin\FotoController;
 use App\Http\Controllers\FotoPublicController;
 use App\Http\Controllers\Admin\VideoController;
@@ -38,6 +39,12 @@ Route::get('/infografis', [InfografisPublicController::class, 'index'])->name('i
 Route::get('/infografis/{slug}', [InfografisPublicController::class, 'show'])->name('infografis.show');
 Route::get('/api/infografis/{id}', [InfografisPublicController::class, 'getInfografisData'])->name('infografis.data');
 
+// Doa Public Routes
+Route::get('/doa', [DoaPublicController::class, 'index'])->name('doa.public.index');
+Route::get('/doa/view/{id}', [DoaPublicController::class, 'view'])->name('doa.public.view');
+Route::get('/doa/kategori/{kategori}', [DoaPublicController::class, 'category'])->name('doa.kategori');
+Route::get('/api/doa/{id}', [DoaPublicController::class, 'show'])->name('doa.show');
+
 // Other public pages
 Route::get('/blog/{id}', function ($id) {
     return view('blog-details', ['id' => $id]);
@@ -54,10 +61,6 @@ Route::get('/service/{id}', function ($id) {
 Route::get('/starter', function () {
     return view('starter-page');
 });
-
-Route::get('/doa', function () {
-    return view('doa');
-})->name('doa');
 
 // Authentication routes
 Route::middleware('guest')->group(function () {

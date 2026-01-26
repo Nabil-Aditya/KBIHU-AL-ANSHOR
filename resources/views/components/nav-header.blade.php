@@ -15,7 +15,7 @@
 
         <nav id="navmenu" class="navmenu">
             <ul>
-                <li><a href="#hero" class="active">Beranda<br></a></li>
+                <li><a href="{{ route('home') }}" class="active">Beranda</a></li>
                 <li class="dropdown"><a href="#"><span>Profil</span> <i
                             class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>
@@ -26,7 +26,7 @@
                     </ul>
                 </li>
                 <li><a href="#">Layanan</a></li>
-                <li><a href="{{ route('doa') }}">Doa</a></li>
+                <li><a href="{{ route('doa.public.index') }}">Doa</a></li>
                 <li><a href="#">Data & Informasi</a></li>
                 <li><a href="#">Galeri</a></li>
                 <li><a href="#">Berita</a></li>

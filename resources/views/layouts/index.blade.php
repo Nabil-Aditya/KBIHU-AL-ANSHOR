@@ -32,6 +32,7 @@
     <!-- Main CSS File -->
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
 
+
     <!-- Cursor CSS File -->
     <link href="{{ asset('assets/css/cursor.css') }}" rel="stylesheet">
 

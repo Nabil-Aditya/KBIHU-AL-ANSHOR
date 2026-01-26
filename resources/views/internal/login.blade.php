@@ -6,7 +6,6 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Internal - Login</title>
 
-  <link href="{{ asset('assets/img/kemenhaj.png') }}" rel="icon">
   <link rel="stylesheet" href="{{ asset('assets2/css/styles.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/styles-login.css') }}">
 </head>
@@ -27,7 +26,7 @@
               <div class="card-body">
 
                 <div class="text-center py-3">
-                  <img src="{{ asset('assets/img/kemenhaj.png') }}"
+                  <img src="{{ asset('assets/img/icon-logo.png') }}"
                        width="120"
                        alt="Logo Kemenag">
                 </div>

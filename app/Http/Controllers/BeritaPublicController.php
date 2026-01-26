@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Berita;
-use App\Models\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -19,12 +18,6 @@ class BeritaPublicController extends Controller
         $beritas = Berita::where('status', 'published')
             ->orderBy('created_at', 'desc')
             ->take(6)
-            ->get();
-        
-        // Get 3 latest published videos
-        $videos = Video::where('status', 'published')
-            ->orderBy('created_at', 'desc')
-            ->take(3)
             ->get();
         
         return view('index', compact('beritas', 'videos'));

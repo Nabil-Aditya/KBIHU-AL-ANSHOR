@@ -84,23 +84,25 @@
   }
 
 .btn-primary {
-    background: #866749;
-    color: white;
-    padding: 15px 40px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s;
-    display: inline-block;
-    box-shadow: 0 5px 15px rgba(45, 46, 54, 0.3);
+    background: #866749 !important;
+    color: white !important;
+    padding: 15px 40px !important;
+    border-radius: 50px !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    transition: all 0.3s !important;
+    display: inline-block !important;
+    box-shadow: 0 5px 15px rgba(45, 46, 54, 0.3) !important;
+    border: none !important;
 }
 
 .btn-primary:hover {
-    background: #866749;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(39, 40, 46, 0.5);
-    color: white;
+    background: #866749 !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 10px 25px rgba(39, 40, 46, 0.5) !important;
+    color: white !important;
 }
+
 
 .btn-watch {
     color: white;
