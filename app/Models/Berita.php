@@ -68,6 +68,6 @@ class Berita extends Model
         if ($this->gambar) {
             return asset('storage/' . $this->gambar);
         }
-        return asset('assets/img/default-news.jpg');
+    return null;
     }
 }

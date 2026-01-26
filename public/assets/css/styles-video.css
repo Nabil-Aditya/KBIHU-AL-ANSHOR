@@ -62,7 +62,7 @@
 }
 
 .video-card:hover .video-thumbnail::after {
-    border-color: transparent transparent transparent #f0a23b
+    border-color: transparent transparent transparent #866749
 }
 
 .video-thumbnail img {
@@ -148,7 +148,7 @@
 }
 
 .video-date i {
-    color: #f0a23b;
+    color: #866749;
     font-size: 1rem;
 }
 

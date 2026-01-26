@@ -54,13 +54,20 @@ class Video extends Model
         }
 
         // Extract YouTube ID from various URL formats
+        // Format: https://www.youtube.com/watch?v=VIDEO_ID
         preg_match('/[\\?\\&]v=([^\\?\\&]+)/', $this->video_url, $matches);
         if (isset($matches[1])) {
             return $matches[1];
         }
 
-        // For youtu.be format
+        // Format: https://youtu.be/VIDEO_ID
         preg_match('/youtu\\.be\\/([^\\?\\&]+)/', $this->video_url, $matches);
+        if (isset($matches[1])) {
+            return $matches[1];
+        }
+
+        // Format: https://www.youtube.com/embed/VIDEO_ID
+        preg_match('/youtube\\.com\\/embed\\/([^\\?\\&]+)/', $this->video_url, $matches);
         if (isset($matches[1])) {
             return $matches[1];
         }
@@ -83,17 +90,22 @@ class Video extends Model
     /**
      * Get thumbnail URL
      */
-    public function getThumbnailUrlAttribute()
-    {
-        if ($this->thumbnail) {
+  public function getThumbnailUrlAttribute()
+{
+    // Prioritas 1: Thumbnail yang diupload
+    if ($this->thumbnail) {
+        $path = public_path('storage/' . $this->thumbnail);
+        if (file_exists($path)) {
             return asset('storage/' . $this->thumbnail);
         }
-
-        // Default YouTube thumbnail
-        if ($this->video_type === 'youtube' && $this->youtube_id) {
-            return "https://img.youtube.com/vi/{$this->youtube_id}/maxresdefault.jpg";
-        }
-
-        return asset('assets/img/default-video.jpg');
     }
+
+    // Prioritas 2: YouTube thumbnail
+    if ($this->video_type === 'youtube' && $this->youtube_id) {
+        return "https://img.youtube.com/vi/{$this->youtube_id}/hqdefault.jpg";
+    }
+
+    // Prioritas 3: Return null untuk menggunakan icon di view
+    return null;
+}
 }

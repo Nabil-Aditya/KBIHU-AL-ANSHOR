@@ -19,7 +19,7 @@
     height: 50px;
     border-radius: 50%;
     position: relative;
-    background: linear-gradient(45deg, #c9a961, #f0d38c, #c9a961);
+    background: linear-gradient(45deg, #866749, #f0d38c, #866749);
     box-shadow: 0 0 15px rgba(201, 169, 97, 0.8);
     animation: pulse 1.5s infinite ease-in-out;
 }
