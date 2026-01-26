@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('judul');
             $table->enum('kategori', ['kegiatan', 'pengumuman', 'artikel']);
             $table->string('doa'); // Path doa
-            $table->date('tanggal');
             $table->enum('status', ['draft', 'published'])->default('draft');
             $table->timestamps();
         });

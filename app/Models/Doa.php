@@ -9,61 +9,36 @@ class Doa extends Model
 {
     use HasFactory;
 
-    protected $table = 'beritas';
+    protected $table = 'doa'; // Sesuaikan dengan nama tabel
 
     protected $fillable = [
         'judul',
         'kategori',
-        'doa',
-        'tanggal',
+        'doa', // Path file PDF
         'status',
     ];
-    
-    protected $casts = [
-        'tanggal' => 'date',
-    ];
 
-    /**
-     * Get the route key for the model.
-     * TIDAK DIGUNAKAN - kita akan handle manual di route
-     */
-    // public function getRouteKeyName()
-    // {
-    //     return 'slug';
-    // }
+    // Accessor untuk mendapatkan URL file
+    public function getDoaUrlAttribute()
+    {
+        return $this->doa ? asset('storage/' . $this->doa) : null;
+    }
 
-    /**
-     * Scope a query to only include published berita.
-     */
+    // Scope untuk filter status
     public function scopePublished($query)
     {
         return $query->where('status', 'published');
     }
 
-    /**
-     * Scope a query to filter by kategori.
-     */
-    public function scopeKategori($query, $kategori)
+    // Scope untuk filter draft
+    public function scopeDraft($query)
+    {
+        return $query->where('status', 'draft');
+    }
+
+    // Scope untuk filter kategori
+    public function scopeByKategori($query, $kategori)
     {
         return $query->where('kategori', $kategori);
-    }
-
-    /**
-     * Get formatted date
-     */
-    public function getFormattedDateAttribute()
-    {
-        return $this->tanggal->format('d F Y');
-    }
-
-    /**
-     * Get image URL
-     */
-    public function getImageUrlAttribute()
-    {
-        if ($this->gambar) {
-            return asset('storage/' . $this->gambar);
-        }
-        return asset('assets/img/default-news.jpg');
     }
 }
