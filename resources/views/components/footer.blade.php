@@ -4,11 +4,11 @@
     <div class="row gy-4">
       <div class="col-lg-4 col-md-6 footer-about">
         <a href="" class="d-flex align-items-center">
-          <span class="sitename">Kbihu Al Anshor</span>
+          <span class="sitename">KBIHU AL-ASNHOR</span>
         </a>
         <div class="footer-contact pt-3">
-          <p>Kbihu Al Anshor</p>
-          <p>Batam, Kepulauan Riau</p>
+          <p>Jl.Bawal No. 35 A RT.007 RW.002 Kel. Batu Merah,</p>
+          <p>Kec. Batu Ampar. Kota Batam, Kepulauan Riau</p>
           <p class="mt-3"><strong>Phone:</strong> <span>+62 778 123456</span></p>
           <p><strong>Email:</strong> <span>KbihuAlAnshor@gmail.com</span></p>
         </div>
@@ -36,7 +36,7 @@
 
       <div class="col-lg-4 col-md-12">
         <h4>Ikuti Kami</h4>
-        <p>Ikuti media sosial kami untuk informasi terbaru seputar haji dan umrah.</p>
+        <p>Ikuti media sosial kami untuk informasi terbaru seputar Bimbingan Haji & Umrah.</p>
         <div class="social-links d-flex">
           <a href=""><i class="bi bi-facebook"></i></a>
           <a href=""><i class="bi bi-twitter-x"></i></a>
@@ -49,7 +49,7 @@
   </div>
 
   <div class="container copyright text-center mt-4">
-    <p>© <span>Copyright</span> <strong class="px-1 sitename">Kemenhaj Batam</strong> <span>All Rights Reserved</span></p>
+    <p>© <span>Copyright</span> <strong class="px-1 sitename">KBIHU AL-ANSHOR</strong> <span>All Rights Reserved</span></p>
     <div class="credits">
       Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
     </div>
