@@ -109,7 +109,8 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(fun
     Route::get('/doa', [DoaController::class, 'index'])->name('doa.index');
     Route::post('/doa', [DoaController::class, 'store'])->name('doa.store');
     Route::get('/doa/{id}', [DoaController::class, 'show'])->where('id', '[0-9]+')->name('doa.show');
+    Route::get('/doa/{id}/edit', [DoaController::class, 'edit'])->where('id', '[0-9]+')->name('doa.edit'); // ✅ TAMBAH INI
     Route::put('/doa/{id}', [DoaController::class, 'update'])->where('id', '[0-9]+')->name('doa.update');
     Route::delete('/doa/{id}', [DoaController::class, 'destroy'])->where('id', '[0-9]+')->name('doa.destroy');
-    Route::delete('/doa/file/{file}', [DoaController::class, 'deleteFile'])->name('doa.deleteFile');
+
 });
