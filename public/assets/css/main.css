@@ -39,7 +39,7 @@
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
   --nav-color: #866749;  /* The default color of the main navmenu links */
-  --nav-hover-color: #866749; /* Applied to main navmenu links when they are hovered over or active */
+  --nav-hover-color: #2d465e; /* Applied to main navmenu links when they are hovered over or active */
   --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
   --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
   --nav-dropdown-color: #212529; /* Used for navigation links of the dropdown items in the navigation menu. */
@@ -868,7 +868,7 @@ h6 {
 }
 
 .page-title .heading h1 {
-  font-size: 38px;
+  font-size: 32px;
   font-weight: 700;
 }
 
@@ -1269,8 +1269,8 @@ section,
 .about .contact-info {
   padding: 1rem 1.5rem;
   background-color: var(--surface-color);
-  border-radius: 0.5rem;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
+  border-radius: 0.9rem 0 0.9rem 0;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.10);
 }
 
 .about .contact-info i {

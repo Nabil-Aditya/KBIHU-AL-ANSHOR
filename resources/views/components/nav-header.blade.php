@@ -15,7 +15,8 @@
 
         <nav id="navmenu" class="navmenu">
             <ul>
-                <li><a href="{{ route('home') }}" class="active">Beranda</a></li>
+                <li><a href="{{ route('home') }}" class="{{ Request::routeIs('home') ? 'active' : '' }}">Beranda</a>
+                </li>
                 <li class="dropdown"><a href="#"><span>Profil</span> <i
                             class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>
@@ -26,10 +27,14 @@
                     </ul>
                 </li>
                 <li><a href="#">Layanan</a></li>
-                <li><a href="{{ route('doa.public.index') }}">Doa</a></li>
-                <li><a href="#">Data & Informasi</a></li>
-                <li><a href="#">Galeri</a></li>
+                <li><a href="{{ route('doa.public.index') }}"
+                        class="{{ Request::routeIs('doa.public.*') ? 'active' : '' }}">Doa</a></li>
                 <li><a href="#">Berita</a></li>
+                <li><a href="#">Video</a></li>
+                <li><a href="#">Galeri</a></li>
+                <li><a href="#">Infografis</a></li>
+                <li><a href="#">Daftar</a></li>
+                <a class="btn-getstarted flex-md-shrink-0" href="/login">Masuk!</a>
 
             </ul>
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
