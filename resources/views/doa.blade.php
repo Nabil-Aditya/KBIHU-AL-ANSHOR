@@ -1,4 +1,4 @@
-@extends('layouts.index')
+@extends('layouts.doa-viewer')
 
 @section('content')
 
@@ -37,31 +37,15 @@
         <div class="container mb-4">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
-                    <form action="{{ route('doa.public.index') }}" method="GET" class="d-flex gap-2">
-                        <!-- Search Input -->
+                    <form action="{{ route('doa.public.index') }}" method="GET" class="d-flex gap-3" id="searchForm">
                         <input type="text" name="search" class="form-control" 
                                placeholder="Cari doa..." 
-                               value="{{ request('search') }}">
-                        
-                        <!-- Category Filter -->
-                        <select name="kategori" class="form-select" style="max-width: 200px;">
-                            <option value="">Semua Kategori</option>
-                            @foreach($kategoris as $kat)
-                                <option value="{{ $kat }}" {{ request('kategori') == $kat ? 'selected' : '' }}>
-                                    {{ ucfirst($kat) }}
-                                </option>
-                            @endforeach
-                        </select>
-                        
-                        <button type="submit" class="btn btn-primary">
+                               value="{{ request('search') }}"
+                               id="searchInput"
+                               style="flex: 1;">
+                        <button type="submit" class="btn btn-primary px-4">
                             <i class="bi bi-search"></i>
                         </button>
-                        
-                        @if(request()->hasAny(['search', 'kategori']))
-                            <a href="{{ route('doa.public.index') }}" class="btn btn-secondary">
-                                <i class="bi bi-x-circle"></i>
-                            </a>
-                        @endif
                     </form>
                 </div>
             </div>
@@ -97,7 +81,7 @@
                                 <div class="mt-auto">
                                     <a href="{{ route('doa.public.view', $doa->id) }}" 
                                        class="btn btn-primary btn-sm w-100">
-                                        <i class="bi bi-eye me-1"></i> Lihat PDF
+                                        <i class="bi bi-eye me-1"></i> Baca Doa
                                     </a>
                                 </div>
                             </div>
@@ -108,7 +92,7 @@
                         <div class="text-center py-5">
                             <i class="bi bi-file-earmark-pdf" style="font-size: 3rem; color: #ccc;"></i>
                             <p class="text-muted mt-3">
-                                @if(request()->hasAny(['search', 'kategori']))
+                                @if(request('search'))
                                     Tidak ada doa yang sesuai dengan pencarian
                                 @else
                                     Belum ada doa tersedia
@@ -135,16 +119,28 @@
 @push('styles')
 <style>
     .card {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition: transform 0.3s ease, box-shadow 0.2s ease;
     }
     
     .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 10px rgba(0,0,0,0.15) !important;
     }
     
     .btn-primary:hover {
-        transform: scale(1.02);
+        transform: scale(1.01);
     }
 </style>
+@endpush
+
+@push('scripts')
+<script>
+    document.getElementById('searchForm').addEventListener('submit', function(e) {
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput.value.trim() === '') {
+            e.preventDefault();
+            return false;
+        }
+    });
+</script>
 @endpush

@@ -42,8 +42,8 @@
                                 <i class="bi bi-trophy"></i>
                             </div>
                             <div class="stat-content">
-                                <h4>5028</h4>
-                                <p class="mb-0">Alumni</p>
+                                <h4>5000+ Alumi</h4>
+                                <p class="mb-0">Jamaah yang telah dibimbing</p>
                             </div>
                         </div>
                     </div>
@@ -53,8 +53,8 @@
                                 <i class="bi bi-briefcase"></i>
                             </div>
                             <div class="stat-content">
-                                <h4>6.5k Faucibus</h4>
-                                <p class="mb-0">Nullam quis ante</p>
+                                <h4>9+ Tahun</h4>
+                                <p class="mb-0">Pengalaman membimbing</p>
                             </div>
                         </div>
                     </div>
@@ -64,8 +64,8 @@
                                 <i class="bi bi-graph-up"></i>
                             </div>
                             <div class="stat-content">
-                                <h4>80k Mauris</h4>
-                                <p class="mb-0">Etiam sit amet orci</p>
+                                <h4>Pembimbing Bersertifikat</h4>
+                                <p class="mb-0">Bersertifikat Kemenag RI</p>
                             </div>
                         </div>
                     </div>
@@ -75,8 +75,8 @@
                                 <i class="bi bi-award"></i>
                             </div>
                             <div class="stat-content">
-                                <h4>6x Phasellus</h4>
-                                <p class="mb-0">Vestibulum ante ipsum</p>
+                                <h4>Program Manasik / Tahun</h4>
+                                <p class="mb-0">40+ Sesi</p>
                             </div>
                         </div>
                     </div>
