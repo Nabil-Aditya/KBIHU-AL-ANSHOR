@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\JamaahController;
 use App\Http\Controllers\Admin\DoaController;
 use App\Http\Controllers\DoaPublicController;
 use App\Http\Controllers\Admin\FotoController;
@@ -120,4 +121,11 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(fun
     Route::put('/doa/{id}', [DoaController::class, 'update'])->where('id', '[0-9]+')->name('doa.update');
     Route::delete('/doa/{id}', [DoaController::class, 'destroy'])->where('id', '[0-9]+')->name('doa.destroy');
 
+    //Jamaah
+    Route::get('/jamaah', [JamaahController::class, 'index'])->name('jamaah.index');
+    Route::post('/jamaah', [JamaahController::class, 'store'])->name('jamaah.store');
+    Route::get('/jamaah/{id}', [JamaahController::class, 'show'])->name('jamaah.show');
+    Route::put('/jamaah/{id}', [JamaahController::class, 'update'])->name('jamaah.update');
+    Route::delete('/jamaah/{id}', [JamaahController::class, 'destroy'])->name('jamaah.destroy');
+    Route::get('/jamaah/export', [JamaahController::class, 'export'])->name('jamaah.export');
 });
