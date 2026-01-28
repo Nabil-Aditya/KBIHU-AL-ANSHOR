@@ -66,6 +66,43 @@
           </a>
         </li>
 
+
+        <li class="nav-small-cap">
+          <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+          <span class="hide-menu">Jamaah</span>
+        </li>
+        <li class="sidebar-item {{ request()->routeIs('admin.jamaah.*') ? 'active' : '' }}">
+          <a class="sidebar-link" href="{{ route('admin.jamaah.index') }}" aria-expanded="false">
+            <span><i class="ti ti-news"></i></span>
+            <span class="hide-menu">Kelola Jamaah</span>
+          </a>
+        </li>
+        {{-- <li class="sidebar-item {{ request()->routeIs('admin.video.*') ? 'active' : '' }}">
+          <a class="sidebar-link" href="{{ route('admin.video.index') }}" aria-expanded="false">
+            <span><i class="ti ti-video"></i></span>
+            <span class="hide-menu">Kelola Video</span>
+          </a>
+        </li>
+        <li class="sidebar-item {{ request()->routeIs('admin.foto.*') ? 'active' : '' }}">
+          <a class="sidebar-link" href="{{ route('admin.foto.index') }}" aria-expanded="false">
+            <span><i class="ti ti-photo"></i></span>
+            <span class="hide-menu">Kelola Foto</span>
+          </a>
+        </li>
+        <li class="sidebar-item {{ request()->routeIs('admin.infografis.*') ? 'active' : '' }}">
+          <a class="sidebar-link" href="{{ route('admin.infografis.index') }}" aria-expanded="false">
+            <span><i class="ti ti-chart-infographic"></i></span>
+            <span class="hide-menu">Kelola Infografis</span>
+          </a>
+        </li>
+        <li class="sidebar-item {{ request()->routeIs('admin.doa.*') ? 'active' : '' }}">
+          <a class="sidebar-link" href="{{ route('admin.doa.index') }}" aria-expanded="false">
+            <span><i class="ti ti-book"></i></span>
+            <span class="hide-menu">Kelola Doa</span>
+          </a>
+        </li> --}}
+
+
         <!-- UI Components Section -->
         <li class="nav-small-cap">
           <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
