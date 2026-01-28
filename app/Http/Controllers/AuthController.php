@@ -16,7 +16,7 @@ class AuthController extends Controller
             return redirect()->route('admin.dashboard'); // Pastikan ini admin.dashboard
         }
         
-        return view('internal.login');
+        return view('login');
     }
 
     public function login(Request $request)

@@ -26,12 +26,12 @@ Route::get('/video/{id}', [VideoPublicController::class, 'show'])->name('video.s
 Route::get('/api/video/{id}/embed', [VideoPublicController::class, 'getEmbedUrl'])->name('video.embed');
 
 // Berita Public Routes
-Route::get('/berita', [BeritaPublicController::class, 'index'])->name('berita.index');
+Route::get('/beritaNew', [BeritaPublicController::class, 'index'])->name('berita.index');
 Route::get('/berita/kategori/{kategori}', [BeritaPublicController::class, 'category'])->name('berita.kategori');
 Route::get('/berita/{slug}', [BeritaPublicController::class, 'show'])->name('berita.show');
 
 // Berita All Routes (LIFO - Semua Berita)
-Route::get('/beritaa', [BeritaAllController::class, 'index'])->name('berita.all');
+Route::get('/berita', [BeritaAllController::class, 'index'])->name('berita.all');
 Route::get('/berit/kategori/{kategori}', [BeritaAllController::class, 'category'])->name('berita.all.category');
 Route::get('/api/berita/latest/{limit?}', [BeritaAllController::class, 'latest'])->name('berita.latest.api');
 
@@ -71,11 +71,11 @@ Route::get('/starter', function () {
 
 // Authentication routes
 Route::middleware('guest')->group(function () {
-    Route::get('/internal/login', [AuthController::class, 'showLoginForm'])->name('login');
-    Route::post('/internal/login', [AuthController::class, 'login'])->name('login.post');
+    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('/ogin', [AuthController::class, 'login'])->name('login.post');
 });
 
-Route::post('/internal/logout', [AuthController::class, 'logout'])
+Route::post('/logout', [AuthController::class, 'logout'])
     ->middleware('auth')
     ->name('logout');
 
@@ -125,8 +125,6 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(fun
     Route::get('/doa/{id}/edit', [DoaController::class, 'edit'])->where('id', '[0-9]+')->name('doa.edit');
     Route::put('/doa/{id}', [DoaController::class, 'update'])->where('id', '[0-9]+')->name('doa.update');
     Route::delete('/doa/{id}', [DoaController::class, 'destroy'])->where('id', '[0-9]+')->name('doa.destroy');
-<<<<<<< HEAD
-=======
 
     //Jamaah
     Route::get('/jamaah', [JamaahController::class, 'index'])->name('jamaah.index');
@@ -135,5 +133,4 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(fun
     Route::put('/jamaah/{id}', [JamaahController::class, 'update'])->name('jamaah.update');
     Route::delete('/jamaah/{id}', [JamaahController::class, 'destroy'])->name('jamaah.destroy');
     Route::get('/jamaah/export', [JamaahController::class, 'export'])->name('jamaah.export');
->>>>>>> 43d2fb5e5102d14f9554c8fc45e830effb64474c
 });
