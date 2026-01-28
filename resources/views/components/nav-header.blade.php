@@ -29,7 +29,12 @@
                 <li><a href="#">Layanan</a></li>
                 <li><a href="{{ route('doa.public.index') }}"
                         class="{{ Request::routeIs('doa.public.*') ? 'active' : '' }}">Doa</a></li>
-                <li><a href="#">Berita</a></li>
+                <li>
+                    <a href="{{ route('berita.index') }}"
+                        class="{{ Request::routeIs('berita.*') || Request::routeIs('berita.all*') ? 'active' : '' }}">
+                        Berita
+                    </a>
+                </li>
                 <li><a href="#">Video</a></li>
                 <li><a href="#">Galeri</a></li>
                 <li><a href="#">Infografis</a></li>

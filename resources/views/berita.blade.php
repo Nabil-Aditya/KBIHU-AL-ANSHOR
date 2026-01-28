@@ -1,115 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.doa-viewer')
 
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Blog - FlexStart Bootstrap Template</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: FlexStart
-  * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
-  * Updated: Nov 01 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-</head>
-
-<body class="blog-page">
-
-  <header id="header" class="header d-flex align-items-center sticky-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center">
-
-      <a href="index.html" class="logo d-flex align-items-center me-auto">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <img src="assets/img/logo.png" alt="">
-        <h1 class="sitename">FlexStart</h1>
-      </a>
-
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="#hero">Home<br></a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#team">Team</a></li>
-          <li><a href="blog.html" class="active">Blog</a></li>
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
-            </ul>
-          </li>
-          <li class="listing-dropdown"><a href="#"><span>Listing Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li>
-                <a href="#">Column 1 link 1</a>
-                <a href="#">Column 1 link 2</a>
-                <a href="#">Column 1 link 3</a>
-              </li>
-              <li>
-                <a href="#">Column 2 link 1</a>
-                <a href="#">Column 2 link 2</a>
-                <a href="#">Column 3 link 3</a>
-              </li>
-              <li>
-                <a href="#">Column 3 link 1</a>
-                <a href="#">Column 3 link 2</a>
-                <a href="#">Column 3 link 3</a>
-              </li>
-              <li>
-                <a href="#">Column 4 link 1</a>
-                <a href="#">Column 4 link 2</a>
-                <a href="#">Column 4 link 3</a>
-              </li>
-              <li>
-                <a href="#">Column 5 link 1</a>
-                <a href="#">Column 5 link 2</a>
-                <a href="#">Column 5 link 3</a>
-              </li>
-            </ul>
-          </li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
-
-      <a class="btn-getstarted flex-md-shrink-0" href="index.html#about">Get Started</a>
-
-    </div>
-  </header>
+@section('content')
 
   <main class="main">
 
@@ -118,9 +9,10 @@
       <div class="heading">
         <div class="container">
           <div class="row d-flex justify-content-center text-center">
-            <div class="col-lg-8">
-              <h1>Blog</h1>
-              <p class="mb-0">Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit quaerat ipsum dolorem.</p>
+            <div class="col-lg-8 mt-5">
+              <h1>Berita</h1>
+              <p class="mb-0">Temukan berbagai informasi dan berita terbaru seputar Kbihu Al-Anshor. Tetap update dengan
+                berita dan kegiatan terkini kami.</p>
             </div>
           </div>
         </div>
@@ -128,390 +20,206 @@
       <nav class="breadcrumbs">
         <div class="container">
           <ol>
-            <li><a href="index.html">Home</a></li>
-            <li class="current">Blog</li>
+            <li><a href="{{ route('home') }}">Home</a></li>
+            <li class="current">Berita</li>
           </ol>
         </div>
       </nav>
     </div><!-- End Page Title -->
 
-    <div class="container">
-      <div class="row">
-
-        <div class="col-lg-8">
-
-          <!-- Blog Posts Section -->
-          <section id="blog-posts" class="blog-posts section">
-
-            <div class="container">
-
-              <div class="row gy-4">
-
-                <div class="col-12">
-                  <article>
-
-                    <div class="post-img">
-                      <img src="assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
-                    </div>
-
-                    <h2 class="title">
-                      <a href="blog-details.html">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</a>
-                    </h2>
-
-                    <div class="meta-top">
-                      <ul>
-                        <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-details.html">John Doe</a></li>
-                        <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2022-01-01">Jan 1, 2022</time></a></li>
-                        <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-details.html">12 Comments</a></li>
-                      </ul>
-                    </div>
-
-                    <div class="content">
-                      <p>
-                        Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
-                        Et eveniet enim. Qui velit est ea dolorem doloremque deleniti aperiam unde soluta. Est cum et quod quos aut ut et sit sunt. Voluptate porro consequatur assumenda perferendis dolore.
-                      </p>
-
-                      <div class="read-more">
-                        <a href="blog-details.html">Read More</a>
-                      </div>
-                    </div>
-
-                  </article>
-                </div><!-- End post list item -->
-
-                <div class="col-12">
-
-                  <article>
-
-                    <div class="post-img">
-                      <img src="assets/img/blog/blog-2.jpg" alt="" class="img-fluid">
-                    </div>
-
-                    <h2 class="title">
-                      <a href="blog-details.html">Nisi magni odit consequatur autem nulla dolorem</a>
-                    </h2>
-
-                    <div class="meta-top">
-                      <ul>
-                        <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-details.html">John Doe</a></li>
-                        <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2022-01-01">Jan 1, 2022</time></a></li>
-                        <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-details.html">12 Comments</a></li>
-                      </ul>
-                    </div>
-
-                    <div class="content">
-                      <p>
-                        Incidunt voluptate sit temporibus aperiam. Quia vitae aut sint ullam quis illum voluptatum et. Quo libero rerum voluptatem pariatur nam.
-                        Ad impedit qui officiis est in non aliquid veniam laborum. Id ipsum qui aut. Sit aliquam et quia molestias laboriosam. Tempora nam odit omnis eum corrupti qui aliquid excepturi molestiae. Facilis et sint quos sed voluptas. Maxime sed tempore enim omnis non alias odio quos distinctio.
-                      </p>
-                      <div class="read-more">
-                        <a href="blog-details.html">Read More</a>
-                      </div>
-                    </div>
-
-                  </article>
-
-                </div><!-- End post list item -->
-
-                <div class="col-12">
-
-                  <article>
-
-                    <div class="post-img">
-                      <img src="assets/img/blog/blog-3.jpg" alt="" class="img-fluid">
-                    </div>
-
-                    <h2 class="title">
-                      <a href="blog-details.html">Possimus soluta ut id suscipit ea ut. In quo quia et soluta libero sit sint.</a>
-                    </h2>
-
-                    <div class="meta-top">
-                      <ul>
-                        <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-details.html">John Doe</a></li>
-                        <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2022-01-01">Jan 1, 2022</time></a></li>
-                        <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-details.html">12 Comments</a></li>
-                      </ul>
-                    </div>
-
-                    <div class="content">
-                      <p>
-                        Aut iste neque ut illum qui perspiciatis similique recusandae non. Fugit autem dolorem labore omnis et. Eum temporibus fugiat voluptate enim tenetur sunt omnis.
-                        Doloremque est saepe laborum aut. Ipsa cupiditate ex harum at recusandae nesciunt. Ut dolores velit.
-                      </p>
-                      <div class="read-more">
-                        <a href="blog-details.html">Read More</a>
-                      </div>
-                    </div>
-
-                  </article>
-
-                </div><!-- End post list item -->
-
-                <div class="col-12">
-
-                  <article>
-
-                    <div class="post-img">
-                      <img src="assets/img/blog/blog-4.jpg" alt="" class="img-fluid">
-                    </div>
-
-                    <h2 class="title">
-                      <a href="blog-details.html">Non rem rerum nam cum quo minus. Dolor distinctio deleniti explicabo eius exercitationem.</a>
-                    </h2>
-
-                    <div class="meta-top">
-                      <ul>
-                        <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-details.html">John Doe</a></li>
-                        <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2022-01-01">Jan 1, 2022</time></a></li>
-                        <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-details.html">12 Comments</a></li>
-                      </ul>
-                    </div>
-
-                    <div class="content">
-                      <p>
-                        Aspernatur rerum perferendis et sint. Voluptates cupiditate voluptas atque quae. Rem veritatis rerum enim et autem. Saepe atque cum eligendi eaque iste omnis a qui.
-                        Quia sed sunt. Ea asperiores expedita et et delectus voluptates rerum. Id saepe ut itaque quod qui voluptas nobis porro rerum. Quam quia nesciunt qui aut est non omnis. Inventore occaecati et quaerat magni itaque nam voluptas. Voluptatem ducimus sint id earum ut nesciunt sed corrupti nemo.
-                      </p>
-                      <div class="read-more">
-                        <a href="blog-details.html">Read More</a>
-                      </div>
-                    </div>
-
-                  </article>
-
-                </div><!-- End post list item -->
-
-              </div><!-- End blog posts list -->
-
-            </div>
-
-          </section><!-- /Blog Posts Section -->
-
-          <!-- Blog Pagination Section -->
-          <section id="blog-pagination" class="blog-pagination section">
-
-            <div class="container">
-              <div class="d-flex justify-content-center">
-                <ul>
-                  <li><a href="#"><i class="bi bi-chevron-left"></i></a></li>
-                  <li><a href="#">1</a></li>
-                  <li><a href="#" class="active">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">4</a></li>
-                  <li>...</li>
-                  <li><a href="#">10</a></li>
-                  <li><a href="#"><i class="bi bi-chevron-right"></i></a></li>
-                </ul>
-              </div>
-            </div>
-
-          </section><!-- /Blog Pagination Section -->
-
-        </div>
-
-        <div class="col-lg-4 sidebar">
-
-          <div class="widgets-container">
-
-            <!-- Search Widget -->
-            <div class="search-widget widget-item">
-
-              <h3 class="widget-title">Search</h3>
-              <form action="">
-                <input type="text">
-                <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-              </form>
-
-            </div><!--/Search Widget -->
-
-            <!-- Categories Widget -->
-            <div class="categories-widget widget-item">
-
-              <h3 class="widget-title">Categories</h3>
-              <ul class="mt-3">
-                <li><a href="#">General <span>(25)</span></a></li>
-                <li><a href="#">Lifestyle <span>(12)</span></a></li>
-                <li><a href="#">Travel <span>(5)</span></a></li>
-                <li><a href="#">Design <span>(22)</span></a></li>
-                <li><a href="#">Creative <span>(8)</span></a></li>
-                <li><a href="#">Educaion <span>(14)</span></a></li>
-              </ul>
-
-            </div><!--/Categories Widget -->
-
-            <!-- Recent Posts Widget -->
-            <div class="recent-posts-widget widget-item">
-
-              <h3 class="widget-title">Recent Posts</h3>
-
-              <div class="post-item">
-                <img src="assets/img/blog/blog-recent-1.jpg" alt="" class="flex-shrink-0">
-                <div>
-                  <h4><a href="blog-details.html">Nihil blanditiis at in nihil autem</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-              </div><!-- End recent post item-->
-
-              <div class="post-item">
-                <img src="assets/img/blog/blog-recent-2.jpg" alt="" class="flex-shrink-0">
-                <div>
-                  <h4><a href="blog-details.html">Quidem autem et impedit</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-              </div><!-- End recent post item-->
-
-              <div class="post-item">
-                <img src="assets/img/blog/blog-recent-3.jpg" alt="" class="flex-shrink-0">
-                <div>
-                  <h4><a href="blog-details.html">Id quia et et ut maxime similique occaecati ut</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-              </div><!-- End recent post item-->
-
-              <div class="post-item">
-                <img src="assets/img/blog/blog-recent-4.jpg" alt="" class="flex-shrink-0">
-                <div>
-                  <h4><a href="blog-details.html">Laborum corporis quo dara net para</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-              </div><!-- End recent post item-->
-
-              <div class="post-item">
-                <img src="assets/img/blog/blog-recent-5.jpg" alt="" class="flex-shrink-0">
-                <div>
-                  <h4><a href="blog-details.html">Et dolores corrupti quae illo quod dolor</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-              </div><!-- End recent post item-->
-
-            </div><!--/Recent Posts Widget -->
-
-            <!-- Tags Widget -->
-            <div class="tags-widget widget-item">
-
-              <h3 class="widget-title">Tags</h3>
-              <ul>
-                <li><a href="#">App</a></li>
-                <li><a href="#">IT</a></li>
-                <li><a href="#">Business</a></li>
-                <li><a href="#">Mac</a></li>
-                <li><a href="#">Design</a></li>
-                <li><a href="#">Office</a></li>
-                <li><a href="#">Creative</a></li>
-                <li><a href="#">Studio</a></li>
-                <li><a href="#">Smart</a></li>
-                <li><a href="#">Tips</a></li>
-                <li><a href="#">Marketing</a></li>
-              </ul>
-
-            </div><!--/Tags Widget -->
-
+    <!-- Filter Section -->
+    <section class="filter-section">
+      <div class="container">
+        <div class="row justify-content-center mb-4">
+          {{-- Search Widget for News --}}
+          <div class="search-widget widget-item mt-2">
+            <form action="{{ route('berita.all') }}" method="GET">
+              <input type="text" name="search" placeholder="Cari berita..." value="{{ request('search') }}">
+              <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+            </form>
           </div>
 
-        </div>
+          <!-- Recent Posts Section -->
+          <section id="recent-posts" class="recent-posts section">
+            <div class="container">
+              <!-- Result Info -->
+              @if(request('search'))
+                <div class="row">
+                  <div class="col-12 text-center mb-4">
+                    <p class="text-muted">
+                      Hasil pencarian untuk: <strong>"{{ request('search') }}"</strong>
+                      @if($beritas->total() > 0)
+                        - Ditemukan {{ $beritas->total() }} berita
+                      @endif
+                    </p>
+                    <a href="{{ route('berita.all') }}" class="btn btn-sm btn-outline-secondary">
+                      <i class="bi bi-x-circle"></i> Hapus Pencarian
+                    </a>
+                  </div>
+                </div>
+              @endif
 
-      </div>
-    </div>
+              <div class="row gy-5">
+                @forelse($beritas as $berita)
+                  <div class="col-xl-4 col-md-6">
+                    <div class="post-item position-relative h-100" data-aos="fade-up"
+                      data-aos-delay="{{ ($loop->iteration % 3) * 100 }}">
+                      <div class="post-img position-relative overflow-hidden">
+                        <a href="{{ route('berita.show', $berita->slug) }}">
+                          @if(!empty($berita->gambar) && file_exists(public_path('storage/' . $berita->gambar)))
+                            <img src="{{ asset('storage/' . $berita->gambar) }}" class="img-fluid" alt="{{ $berita->judul }}">
+                          @else
+                            <div class="no-image-icon">
+                              <i class="bi bi-image"></i>
+                            </div>
+                          @endif
+                        </a>
+
+                        <span class="post-date">
+                          {{ \Carbon\Carbon::parse($berita->tanggal)->format('F d') }}
+                        </span>
+                      </div>
+                      <div class="post-content d-flex flex-column">
+                        <h3 class="post-title">
+                          <a href="{{ route('berita.show', $berita->slug) }}">
+                            {{ Str::limit($berita->judul, 60) }}
+                          </a>
+                        </h3>
+                        <div class="meta d-flex align-items-center">
+                          <div class="d-flex align-items-center">
+                            <i class="bi bi-person"></i> <span class="ps-2">{{ $berita->penulis }}</span>
+                          </div>
+                          <span class="px-3 text-black-50">/</span>
+                          <div class="d-flex align-items-center">
+                            <i class="bi bi-folder2"></i> <span class="ps-2">{{ ucfirst($berita->kategori) }}</span>
+                          </div>
+                        </div>
+
+                        @if($berita->excerpt)
+                          <p class="mt-3">{{ Str::limit($berita->excerpt, 100) }}</p>
+                        @endif
+
+                        <hr>
+                        <a href="{{ route('berita.show', $berita->slug) }}" class="readmore stretched-link">
+                          <span>Selengkapnya</span><i class="bi bi-arrow-right"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                @empty
+                  <div class="col-12">
+                    <div class="text-center py-5">
+                      <i class="bi bi-newspaper" style="font-size: 3rem; color: #ccc;"></i>
+                      <p class="text-muted mt-3">
+                        @if(request('search'))
+                          Tidak ada berita ditemukan untuk pencarian "{{ request('search') }}"
+                        @else
+                          Belum ada berita tersedia
+                        @endif
+                      </p>
+                    </div>
+                  </div>
+                @endforelse
+              </div>
+
+              <!-- Pagination -->
+              @if($beritas->hasPages())
+                <div class="row mt-5">
+                  <div class="col-12">
+                    <nav aria-label="Page navigation">
+                      {{ $beritas->appends(request()->query())->links('pagination::bootstrap-5') }}
+                    </nav>
+                  </div>
+                </div>
+              @endif
+            </div>
+          </section>
 
   </main>
 
-  <footer id="footer" class="footer">
+@endsection
 
-    <div class="footer-newsletter">
-      <div class="container">
-        <div class="row justify-content-center text-center">
-          <div class="col-lg-6">
-            <h4>Join Our Newsletter</h4>
-            <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
-            <form action="forms/newsletter.php" method="post" class="php-email-form">
-              <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
-              <div class="loading">Loading</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+@push('styles')
+  <style>
+    .filter-section {
+      padding: 30px 0;
+      background-color: #f8f9fa;
+    }
 
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-4 col-md-6 footer-about">
-          <a href="index.html" class="d-flex align-items-center">
-            <span class="sitename">FlexStart</span>
-          </a>
-          <div class="footer-contact pt-3">
-            <p>A108 Adam Street</p>
-            <p>New York, NY 535022</p>
-            <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-            <p><strong>Email:</strong> <span>info@example.com</span></p>
-          </div>
-        </div>
+    .search-widget {
+      max-width: 600px;
+      margin: 0 auto;
+    }
 
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
-          </ul>
-        </div>
+    .search-widget form {
+      display: flex;
+      gap: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
 
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Web Design</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Web Development</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Product Management</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Marketing</a></li>
-          </ul>
-        </div>
+    .search-widget input[type="text"] {
+      flex: 1;
+      padding: 12px 20px;
+      border: none;
+      font-size: 16px;
+    }
 
-        <div class="col-lg-4 col-md-12">
-          <h4>Follow Us</h4>
-          <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
-          <div class="social-links d-flex">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
-          </div>
-        </div>
+    .search-widget input[type="text"]:focus {
+      outline: none;
+    }
 
-      </div>
-    </div>
+    .search-widget button {
+      padding: 12px 24px;
+      background-color: #3498db;
+      border: none;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">FlexStart</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Distributed by <a href=“https://themewagon.com>ThemeWagon
-      </div>
-    </div>
+    .search-widget button:hover {
+      background-color: #2980b9;
+    }
 
-  </footer>
+    .no-image-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 250px;
+      background-color: #e9ecef;
+      color: #6c757d;
+      font-size: 4rem;
+    }
 
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    .post-item {
+      transition: transform 0.3s ease;
+    }
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    .post-item:hover {
+      transform: translateY(-5px);
+    }
 
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
+    .post-img img {
+      transition: transform 0.3s ease;
+      height: 250px;
+      object-fit: cover;
+      width: 100%;
+    }
 
-</body>
+    .post-item:hover .post-img img {
+      transform: scale(1.05);
+    }
 
-</html>
+    .post-title a {
+      color: #2c3e50;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .post-title a:hover {
+      color: #3498db;
+    }
+  </style>
+@endpush

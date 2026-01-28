@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\VideoPublicController;
 use App\Http\Controllers\Admin\BeritaController;
 use App\Http\Controllers\BeritaPublicController;
+use App\Http\Controllers\BeritaAllController;
 use App\Http\Controllers\Admin\InfografisController;
 use App\Http\Controllers\InfografisPublicController;
 
@@ -27,6 +28,11 @@ Route::get('/api/video/{id}/embed', [VideoPublicController::class, 'getEmbedUrl'
 Route::get('/berita', [BeritaPublicController::class, 'index'])->name('berita.index');
 Route::get('/berita/kategori/{kategori}', [BeritaPublicController::class, 'category'])->name('berita.kategori');
 Route::get('/berita/{slug}', [BeritaPublicController::class, 'show'])->name('berita.show');
+
+// Berita All Routes (LIFO - Semua Berita)
+Route::get('/beritaa', [BeritaAllController::class, 'index'])->name('berita.all');
+Route::get('/berit/kategori/{kategori}', [BeritaAllController::class, 'category'])->name('berita.all.category');
+Route::get('/api/berita/latest/{limit?}', [BeritaAllController::class, 'latest'])->name('berita.latest.api');
 
 // Foto Public Routes
 Route::get('/foto', [FotoPublicController::class, 'index'])->name('foto.index');
@@ -111,13 +117,11 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(fun
     Route::delete('/infografis/{id}', [InfografisController::class, 'destroy'])->where('id', '[0-9]+')->name('infografis.destroy');
     Route::delete('/infografis/file/{file}', [InfografisController::class, 'deleteFile'])->name('infografis.deleteFile');
     
-    
-    // Doa
+    // Doa Management
     Route::get('/doa', [DoaController::class, 'index'])->name('doa.index');
     Route::post('/doa', [DoaController::class, 'store'])->name('doa.store');
     Route::get('/doa/{id}', [DoaController::class, 'show'])->where('id', '[0-9]+')->name('doa.show');
-    Route::get('/doa/{id}/edit', [DoaController::class, 'edit'])->where('id', '[0-9]+')->name('doa.edit'); // ✅ TAMBAH INI
+    Route::get('/doa/{id}/edit', [DoaController::class, 'edit'])->where('id', '[0-9]+')->name('doa.edit');
     Route::put('/doa/{id}', [DoaController::class, 'update'])->where('id', '[0-9]+')->name('doa.update');
     Route::delete('/doa/{id}', [DoaController::class, 'destroy'])->where('id', '[0-9]+')->name('doa.destroy');
-
 });
