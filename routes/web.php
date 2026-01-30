@@ -127,10 +127,11 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(fun
     Route::delete('/doa/{id}', [DoaController::class, 'destroy'])->where('id', '[0-9]+')->name('doa.destroy');
 
     //Jamaah
-    Route::get('/jamaah', [JamaahController::class, 'index'])->name('jamaah.index');
-    Route::post('/jamaah', [JamaahController::class, 'store'])->name('jamaah.store');
-    Route::get('/jamaah/{id}', [JamaahController::class, 'show'])->name('jamaah.show');
-    Route::put('/jamaah/{id}', [JamaahController::class, 'update'])->name('jamaah.update');
-    Route::delete('/jamaah/{id}', [JamaahController::class, 'destroy'])->name('jamaah.destroy');
-    Route::get('/jamaah/export', [JamaahController::class, 'export'])->name('jamaah.export');
+        Route::get('/jamaah', [\App\Http\Controllers\Admin\JamaahController::class, 'index'])->name('jamaah.index');
+    Route::post('/jamaah', [\App\Http\Controllers\Admin\JamaahController::class, 'store'])->name('jamaah.store');
+    Route::get('/jamaah/{id}', [\App\Http\Controllers\Admin\JamaahController::class, 'show'])->name('jamaah.show');
+    Route::get('/jamaah/{id}/edit', [\App\Http\Controllers\Admin\JamaahController::class, 'edit'])->name('jamaah.edit'); // INI PENTING
+    Route::put('/jamaah/{id}', [\App\Http\Controllers\Admin\JamaahController::class, 'update'])->name('jamaah.update');
+    Route::delete('/jamaah/{id}', [\App\Http\Controllers\Admin\JamaahController::class, 'destroy'])->name('jamaah.destroy');
+    Route::get('/jamaah/export', [\App\Http\Controllers\Admin\JamaahController::class, 'export'])->name('jamaah.export');
 });

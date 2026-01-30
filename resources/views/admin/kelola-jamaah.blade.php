@@ -442,9 +442,10 @@
                                     </div>
 
                                     <div class="col-md-4 mb-3">
-                                        <label class="form-label">Email</label>
+                                        <label class="form-label">Email <span class="text-danger">*</span></label>
                                         <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                            name="email" value="{{ old('email') }}">
+                                            name="email" value="{{ old('email') }}" required>
+                                        <small class="text-muted">Email akan digunakan untuk login</small>
                                         @error('email')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -455,6 +456,28 @@
                                         <input type="text" class="form-control @error('mahram_dengan') is-invalid @enderror"
                                             name="mahram_dengan" value="{{ old('mahram_dengan') }}">
                                         @error('mahram_dengan')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <!-- TAMBAHKAN FIELD PASSWORD -->
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Password</label>
+                                        <input type="password" class="form-control @error('password') is-invalid @enderror"
+                                            name="password" id="passwordTambah">
+                                        <small class="text-muted">Kosongkan untuk password default: <code>password123</code></small>
+                                        @error('password')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-md-6 mb-3" id="confirmPasswordContainer" style="display: none;">
+                                        <label class="form-label">Konfirmasi Password</label>
+                                        <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror"
+                                            name="password_confirmation">
+                                        @error('password_confirmation')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -739,6 +762,20 @@
                     });
                 }
 
+                // Fungsi untuk show/hide konfirmasi password
+                const passwordTambah = document.getElementById('passwordTambah');
+                const confirmPasswordContainer = document.getElementById('confirmPasswordContainer');
+                
+                if (passwordTambah && confirmPasswordContainer) {
+                    passwordTambah.addEventListener('input', function() {
+                        if (this.value.length > 0) {
+                            confirmPasswordContainer.style.display = 'block';
+                        } else {
+                            confirmPasswordContainer.style.display = 'none';
+                        }
+                    });
+                }
+
                 function calculateTerbayarTambah() {
                     const status = statusPembayaranTambah.value;
                     const total = parseFloat(totalBiayaTambah.value) || 0;
@@ -869,13 +906,28 @@
                                         </div>
 
                                         <div class="col-md-4 mb-3">
-                                            <label class="form-label">Email</label>
-                                            <input type="email" class="form-control" name="email" value="${escapeHtml(data.email || '')}">
+                                            <label class="form-label">Email <span class="text-danger">*</span></label>
+                                            <input type="email" class="form-control" name="email" value="${escapeHtml(data.email || '')}" required>
                                         </div>
 
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Mahram Dengan (jika wanita)</label>
                                             <input type="text" class="form-control" name="mahram_dengan" value="${escapeHtml(data.mahram_dengan || '')}">
+                                        </div>
+                                    </div>
+
+                                    <!-- TAMBAHKAN FIELD PASSWORD UNTUK EDIT -->
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Password</label>
+                                            <input type="password" class="form-control" name="password" 
+                                                   id="passwordEdit" placeholder="Kosongkan jika tidak diubah">
+                                            <small class="text-muted">Biarkan kosong jika tidak ingin mengubah password</small>
+                                        </div>
+
+                                        <div class="col-md-6 mb-3" id="confirmPasswordEditContainer" style="display: none;">
+                                            <label class="form-label">Konfirmasi Password</label>
+                                            <input type="password" class="form-control" name="password_confirmation">
                                         </div>
                                     </div>
                                 </div>
@@ -1303,6 +1355,20 @@
                         statusPembayaranEdit.addEventListener('change', calculateTerbayarEdit);
                         totalBiayaEdit.addEventListener('input', calculateTerbayarEdit);
                         uangDpEdit.addEventListener('input', calculateTerbayarEdit);
+                    }
+
+                    // Event listener untuk password edit
+                    const passwordEdit = document.getElementById('passwordEdit');
+                    const confirmPasswordEditContainer = document.getElementById('confirmPasswordEditContainer');
+                    
+                    if (passwordEdit && confirmPasswordEditContainer) {
+                        passwordEdit.addEventListener('input', function() {
+                            if (this.value.length > 0) {
+                                confirmPasswordEditContainer.style.display = 'block';
+                            } else {
+                                confirmPasswordEditContainer.style.display = 'none';
+                            }
+                        });
                     }
                 }
 

@@ -14,6 +14,12 @@ return new class extends Migration
         Schema::create('jamaahs', function (Blueprint $table) {
             $table->id();
             
+            // Relasi ke User
+            $table->foreignId('user_id')
+                  ->nullable()
+                  ->constrained('users')
+                  ->onDelete('cascade');
+            
             // Data Pribadi
             $table->string('nama_lengkap');
             $table->string('nik', 16)->unique()->nullable();
@@ -46,6 +52,15 @@ return new class extends Migration
             
             $table->text('keterangan')->nullable();
             $table->timestamps();
+            
+            // Index untuk pencarian
+            $table->index('nama_lengkap');
+            $table->index('nik');
+            $table->index('no_telepon');
+            $table->index('status_pendaftaran');
+            $table->index('status_pembayaran');
+            $table->index('jenis_ibadah');
+            $table->index('user_id');
         });
     }
 
