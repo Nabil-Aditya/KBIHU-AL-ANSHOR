@@ -14,7 +14,7 @@
                 <div class="container">
                     <ol>
                         <li><a href="{{ route('home') }}">Home</a></li>
-                        <li><a href="{{ route('berita.index') }}">Berita</a></li>
+                        <li><a href="{{ route('berita.all') }}">Berita</a></li>
                         <li class="current">{{ Str::limit($berita->judul, 50) }}</li>
                     </ol>
                 </div>
@@ -55,7 +55,7 @@
                                         </li>
                                         <li class="d-flex align-items-center">
                                             <i class="bi bi-folder2"></i>
-                                            <a href="{{ route('berita.kategori', $berita->kategori) }}">
+                                            <a href="{{ route('berita.all.kategori', $berita->kategori) }}">
                                                 {{ ucfirst($berita->kategori) }}
                                             </a>
                                         </li>
@@ -75,7 +75,7 @@
                                     <i class="bi bi-folder"></i>
                                     <ul class="cats">
                                         <li>
-                                            <a href="{{ route('berita.kategori', $berita->kategori) }}">
+                                            <a href="{{ route('berita.all.kategori', $berita->kategori) }}">
                                                 {{ ucfirst($berita->kategori) }}
                                             </a>
                                         </li>
@@ -165,7 +165,7 @@
                         <!-- Search Widget -->
                         <div class="search-widget widget-item">
                             <h3 class="widget-title">Pencarian</h3>
-                            <form action="{{ route('berita.index') }}" method="GET">
+                            <form action="{{ route('berita.all') }}" method="GET">
                                 <input type="text" name="search" placeholder="Cari berita...">
                                 <button type="submit" title="Search"><i class="bi bi-search"></i></button>
                             </form>
@@ -176,19 +176,19 @@
                             <h3 class="widget-title">Kategori</h3>
                             <ul class="mt-3">
                                 <li>
-                                    <a href="{{ route('berita.kategori', 'kegiatan') }}">
+                                    <a href="{{ route('berita.all.kategori', 'kegiatan') }}">
                                         Kegiatan
                                         <span>({{ \App\Models\Berita::where('kategori', 'kegiatan')->where('status', 'published')->count() }})</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('berita.kategori', 'pengumuman') }}">
+                                    <a href="{{ route('berita.all.kategori', 'pengumuman') }}">
                                         Pengumuman
                                         <span>({{ \App\Models\Berita::where('kategori', 'pengumuman')->where('status', 'published')->count() }})</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('berita.kategori', 'artikel') }}">
+                                    <a href="{{ route('berita.all.kategori', 'artikel') }}">
                                         Artikel
                                         <span>({{ \App\Models\Berita::where('kategori', 'artikel')->where('status', 'published')->count() }})</span>
                                     </a>
@@ -224,7 +224,7 @@
 
                         <!-- Back to All News Widget -->
                         <div class="widget-item text-center">
-                            <a href="{{ route('berita.index') }}" class="btn btn-primary w-100">
+                            <a href="{{ route('berita.all') }}" class="btn btn-primary w-100">
                                 <i class="bi bi-arrow-left me-2"></i> Semua Berita
                             </a>
                         </div>

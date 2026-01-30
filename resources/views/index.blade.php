@@ -152,126 +152,138 @@
     </section><!-- /About Section -->
 
 
-     <!-- Features Section -->
+    <!-- Features Section -->
     <section id="features" class="features section">
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Bimbingan dan Manasik</h2>
-        <p>“Program bimbingan manasik yang dirancang untuk membekali jamaah dengan pengetahuan, tata cara, dan kesiapan
-          ibadah haji serta umrah.”</p>
-      </div><!-- End Section Title -->
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+            <h2>Bimbingan dan Manasik</h2>
+            <p>“Program bimbingan manasik yang dirancang untuk membekali jamaah dengan pengetahuan, tata cara, dan kesiapan
+                ibadah haji serta umrah.”</p>
+        </div><!-- End Section Title -->
 
-      <div class="container">
+        <div class="container">
 
-        <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center">
 
-          <ul class="nav nav-tabs" data-aos="fade-up" data-aos-delay="100">
+                <ul class="nav nav-tabs" data-aos="fade-up" data-aos-delay="100">
 
-            <li class="nav-item">
-              <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#features-tab-1">
-                <h4>Materi</h4>
-              </a>
-            </li><!-- End tab nav item -->
+                    <li class="nav-item">
+                        <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#features-tab-1">
+                            <h4>Materi</h4>
+                        </a>
+                    </li><!-- End tab nav item -->
 
-            <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-2">
-                <h4>Narasumber</h4>
-              </a><!-- End tab nav item -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-2">
+                            <h4>Narasumber</h4>
+                        </a><!-- End tab nav item -->
 
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-3">
-                <h4>Metode</h4>
-              </a>
-            </li><!-- End tab nav item -->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-3">
+                            <h4>Metode</h4>
+                        </a>
+                    </li><!-- End tab nav item -->
 
-          </ul>
+                </ul>
+
+            </div>
+
+            <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
+
+                <div class="tab-pane fade active show" id="features-tab-1">
+                    <div class="row">
+                        <div class="col-lg-7 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
+                            <h3>Materi Bimbingan Manasik</h3>
+
+                            <ul>
+                                <li><i class="bi bi-check2-all"></i> <span>Kebijakan Pemerintah Tentang Penyelenggaraan
+                                        Ibadah Haji
+                                        dan Umrah.</span></li>
+                                <li><i class="bi bi-check2-all"></i> <span>Kebijakan Pemerintah Tentang Kesehatan Haji dan
+                                        Umrah.</span></li>
+                                <li><i class="bi bi-check2-all"></i> <span>Pengertian Haji dan Umrah serta syarat, rukun dan
+                                        wajib
+                                        haji.</span></li>
+                                <li><i class="bi bi-check2-all"></i> <span>Etika dan Adap dalam membangun Akhlakul
+                                        Karimah</span>
+                                </li>
+                                <li><i class="bi bi-check2-all"></i> <span>Proses perjalanan haji gelombang 1 dan gelombang
+                                        2</span></li>
+                                <li><i class="bi bi-check2-all"></i> <span>Tata cara pelaksanaan haji dan umrah</span></li>
+                                <li><i class="bi bi-check2-all"></i> <span>Doa & Zikir dalam pelaksanaan haji dan
+                                        umrah</span></li>
+                                <li><i class="bi bi-check2-all"></i> <span>Keselamatan dan Kesehatan dalam Penerbangan
+                                        Haji</span>
+                                </li>
+                                <li><i class="bi bi-check2-all"></i> <span>Kebudayaan dan Adat Istiadat Arab Saudi</span>
+                                </li>
+                                <li><i class="bi bi-check2-all"></i> <span>1Praktek dalam pelaksanaan haji dan umrah</span>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="col-lg-5 order-1 order-lg-2 text-center">
+                            <img src="assets/img/image-1.png" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div><!-- End tab content item -->
+
+                <div class="tab-pane fade" id="features-tab-2">
+                    <div class="row">
+                        <div class="col-lg-7 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
+                            <h3>Narasumber</h3>
+                            <p class="fst-italic">
+                                Materi pembelajaran akan disampaikan oleh narasumber-narasumber berpengalaman.
+                            </p>
+                            <ul>
+                                <li><i class="bi bi-check2-all"></i> <span>Kementerian Haji dan Umrah.</span></li>
+                                <li><i class="bi bi-check2-all"></i> <span>Kementerian Kesehatan.</span></li>
+                                <li><i class="bi bi-check2-all"></i> <span>Majelis Ulama Indonesia (MUI).</span></li>
+                                <li><i class="bi bi-check2-all"></i> <span>Praktisi Haji & Umrah.</span></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-5 order-1 order-lg-2 text-center">
+                            <img src="assets/img/image-2.png" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div><!-- End tab content item -->
+
+                <div class="tab-pane fade" id="features-tab-3">
+                    <div class="row">
+                        <div class="col-lg-7 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
+                            <h3>Metode Pembelajaran</h3>
+                            <ul class="rapi-list">
+                                <li><i class="bi bi-check2-all"></i> <span>Ceramah → pembimbing menjelaskan materi
+                                        ibadah..</span>
+                                </li>
+                                <li><i class="bi bi-check2-all"></i> <span>Demonstrasi → pembimbing memperagakan langsung
+                                        (misalnya
+                                        cara thawaf, sa’i, wukuf).</span></li>
+                                <li><i class="bi bi-check2-all"></i> <span>Simulasi/Role Play → jamaah mempraktikkan manasik
+                                        dengan
+                                        bimbingan.</span></li>
+                                <li><i class="bi bi-check2-all"></i> <span>Diskusi → tanya jawab interaktif antara
+                                        pembimbing dan
+                                        jamaah.</span></li>
+                                <li><i class="bi bi-check2-all"></i> <span>Audio Visual → menggunakan video, gambar, atau
+                                        slide.</span></li>
+                                <li><i class="bi bi-check2-all"></i> <span>Praktik Lapangan → latihan manasik di lapangan
+                                        manasik
+                                        atau asrama haji (gladi posko).</span></li>
+                            </ul>
+
+                        </div>
+                        <div class="col-lg-5 order-1 order-lg-2 text-center">
+                            <img src="assets/img/image-3.png" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div><!-- End tab content item -->
+
+            </div>
 
         </div>
-
-        <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
-
-          <div class="tab-pane fade active show" id="features-tab-1">
-            <div class="row">
-              <div class="col-lg-7 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
-                <h3>Materi Bimbingan Manasik</h3>
-
-                <ul>
-                  <li><i class="bi bi-check2-all"></i> <span>Kebijakan Pemerintah Tentang Penyelenggaraan Ibadah Haji
-                      dan Umrah.</span></li>
-                  <li><i class="bi bi-check2-all"></i> <span>Kebijakan Pemerintah Tentang Kesehatan Haji dan
-                      Umrah.</span></li>
-                  <li><i class="bi bi-check2-all"></i> <span>Pengertian Haji dan Umrah serta syarat, rukun dan wajib
-                      haji.</span></li>
-                  <li><i class="bi bi-check2-all"></i> <span>Etika dan Adap dalam membangun Akhlakul Karimah</span>
-                  </li>
-                  <li><i class="bi bi-check2-all"></i> <span>Proses perjalanan haji gelombang 1 dan gelombang
-                      2</span></li>
-                  <li><i class="bi bi-check2-all"></i> <span>Tata cara pelaksanaan haji dan umrah</span></li>
-                  <li><i class="bi bi-check2-all"></i> <span>Doa & Zikir dalam pelaksanaan haji dan umrah</span></li>
-                  <li><i class="bi bi-check2-all"></i> <span>Keselamatan dan Kesehatan dalam Penerbangan Haji</span>
-                  </li>
-                  <li><i class="bi bi-check2-all"></i> <span>Kebudayaan dan Adat Istiadat Arab Saudi</span></li>
-                  <li><i class="bi bi-check2-all"></i> <span>1Praktek dalam pelaksanaan haji dan umrah</span></li>
-
-                </ul>
-              </div>
-              <div class="col-lg-5 order-1 order-lg-2 text-center">
-                <img src="assets/img/image-1.png" alt="" class="img-fluid">
-              </div>
-            </div>
-          </div><!-- End tab content item -->
-
-          <div class="tab-pane fade" id="features-tab-2">
-            <div class="row">
-              <div class="col-lg-7 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
-                <h3>Narasumber</h3>
-                <p class="fst-italic">
-                  Materi pembelajaran akan disampaikan oleh narasumber-narasumber berpengalaman.
-                </p>
-                <ul>
-                  <li><i class="bi bi-check2-all"></i> <span>Kementerian Haji dan Umrah.</span></li>
-                  <li><i class="bi bi-check2-all"></i> <span>Kementerian Kesehatan.</span></li>
-                  <li><i class="bi bi-check2-all"></i> <span>Majelis Ulama Indonesia (MUI).</span></li>
-                  <li><i class="bi bi-check2-all"></i> <span>Praktisi Haji & Umrah.</span></li>
-                </ul>
-              </div>
-              <div class="col-lg-5 order-1 order-lg-2 text-center">
-                <img src="assets/img/image-2.png" alt="" class="img-fluid">
-              </div>
-            </div>
-          </div><!-- End tab content item -->
-
-          <div class="tab-pane fade" id="features-tab-3">
-            <div class="row">
-              <div class="col-lg-7 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
-                <h3>Metode Pembelajaran</h3>
-                <ul class="rapi-list">
-                  <li><i class="bi bi-check2-all"></i> <span>Ceramah → pembimbing menjelaskan materi ibadah..</span>
-                  </li>
-                  <li><i class="bi bi-check2-all"></i> <span>Demonstrasi → pembimbing memperagakan langsung (misalnya
-                      cara thawaf, sa’i, wukuf).</span></li>
-                  <li><i class="bi bi-check2-all"></i> <span>Simulasi/Role Play → jamaah mempraktikkan manasik dengan
-                      bimbingan.</span></li>
-                  <li><i class="bi bi-check2-all"></i> <span>Diskusi → tanya jawab interaktif antara pembimbing dan
-                      jamaah.</span></li>
-                  <li><i class="bi bi-check2-all"></i> <span>Audio Visual → menggunakan video, gambar, atau
-                      slide.</span></li>
-                  <li><i class="bi bi-check2-all"></i> <span>Praktik Lapangan → latihan manasik di lapangan manasik
-                      atau asrama haji (gladi posko).</span></li>
-                </ul>
-
-              </div>
-              <div class="col-lg-5 order-1 order-lg-2 text-center">
-                <img src="assets/img/image-3.png" alt="" class="img-fluid">
-              </div>
-            </div>
-          </div><!-- End tab content item -->
-
-        </div>
-
-      </div>
 
     </section><!-- /Features Section -->
 
@@ -338,7 +350,7 @@
 
             @if($beritas->count() >= 6)
                 <div class="text-center mt-5" data-aos="fade-up">
-                    <a href="{{ route('berita.index') }}" class="btn btn-primary btn-lg">
+                    <a href="{{ route('berita.all') }}" class="btn btn-primary btn-lg">
                         <i class="bi bi-plus-circle me-2"></i>Lihat Semua Berita
                     </a>
                 </div>
@@ -395,7 +407,7 @@
 
             @if($videos->count() >= 3)
                 <div class="text-center mt-5" data-aos="fade-up">
-                    <a href="{{ route('video.index') }}" class="btn btn-primary btn-lg">
+                    <a href="{{ route('video.all') }}" class="btn btn-primary btn-lg">
                         <i class="bi bi-collection-play me-2"></i>Lihat Semua Video
                     </a>
                 </div>
@@ -443,7 +455,7 @@
 
             @if($fotos->count() >= 6)
                 <div class="text-center mt-5" data-aos="fade-up">
-                    <a href="{{ route('foto.index') }}" class="btn btn-primary btn-lg">
+                    <a href="{{ route('galeri.all') }}" class="btn btn-primary btn-lg">
                         <i class="bi bi-images me-2"></i>Lihat Semua Foto
                     </a>
                 </div>
@@ -691,10 +703,10 @@
                 slide.className = 'custom-slide';
                 slide.style.display = index === customCurrentIndex ? 'flex' : 'none';
                 slide.innerHTML = `
-                                            <img src="${file.file_url}" 
-                                                 alt="Slide ${index + 1}"
-                                                 draggable="false">
-                                        `;
+                                                <img src="${file.file_url}" 
+                                                     alt="Slide ${index + 1}"
+                                                     draggable="false">
+                                            `;
                 wrapper.appendChild(slide);
             });
 

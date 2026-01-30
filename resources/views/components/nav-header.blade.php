@@ -1,7 +1,7 @@
 <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-        <a href="" class="logo d-flex align-items-center me-auto">
+        <a href="{{ route('home') }}" class="logo d-flex align-items-center me-auto">
             <img src="{{ asset('assets/img/no-bg-logo.png') }}" alt="Logo KBIHU Al-ANSHOR" class="logo-img"
                 style="max-height: 50px;">
             <div class="logo-text">
@@ -27,17 +27,28 @@
                     </ul>
                 </li>
                 <li><a href="#">Layanan</a></li>
-                <li><a href="{{ route('doa.public.index') }}"
-                        class="{{ Request::routeIs('doa.public.*') ? 'active' : '' }}">Doa</a></li>
+                <li><a href="{{ route('doa.all') }}" class="{{ Request::routeIs('doa.*') ? 'active' : '' }}">Doa</a>
+                </li>
                 <li>
-                    <a href="{{ route('berita.index') }}"
-                        class="{{ Request::routeIs('berita.*') || Request::routeIs('berita.all*') ? 'active' : '' }}">
+                    <a href="{{ route('berita.all') }}" class="{{ Request::routeIs('berita.*') ? 'active' : '' }}">
                         Berita
                     </a>
                 </li>
-                <li><a href="#">Video</a></li>
-                <li><a href="#">Galeri</a></li>
-                <li><a href="#">Infografis</a></li>
+                <li>
+                    <a href="{{ route('video.all') }}" class="{{ Request::routeIs('video.*') ? 'active' : '' }}">
+                        Video
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('galeri.all') }}" class="{{ Request::routeIs('galeri.*') ? 'active' : '' }}">
+                        Galeri Foto
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('infografis.index') }}" class="{{ Request::routeIs('infografis.*') ? 'active' : '' }}">
+                        Infografis
+                    </a>
+                </li>
                 <li><a href="#">Daftar</a></li>
                 <a class="btn-getstarted flex-md-shrink-0" href="/login">Masuk!</a>
 

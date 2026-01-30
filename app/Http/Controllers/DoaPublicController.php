@@ -14,26 +14,39 @@ class DoaPublicController extends Controller
     {
         $query = Doa::where('status', 'published');
 
+        // Search functionality - mencari di judul dan kategori
+        if ($request->filled('search')) {
+            $searchTerm = $request->search;
+            $query->where(function($q) use ($searchTerm) {
+                $q->where('judul', 'like', '%' . $searchTerm . '%')
+                  ->orWhere('kategori', 'like', '%' . $searchTerm . '%');
+            });
+        }
+
         // Filter by category if provided
         if ($request->filled('kategori')) {
             $query->where('kategori', $request->kategori);
         }
 
-        // Search functionality
-        if ($request->filled('search')) {
-            $query->where('judul', 'like', '%' . $request->search . '%');
-        }
-
         // LIFO - Latest doa first
-        $doas = $query->orderBy('created_at', 'desc')->paginate(12);
+        $doas = $query->orderBy('created_at', 'desc')
+                      ->orderBy('id', 'desc')
+                      ->paginate(12);
         
         // Get all categories for filter dropdown
         $kategoris = Doa::where('status', 'published')
             ->select('kategori')
             ->distinct()
+            ->orderBy('kategori', 'asc')
             ->pluck('kategori');
         
-        return view('doa', compact('doas', 'kategoris'));
+        // Get total published doa count
+        $totalDoa = Doa::where('status', 'published')->count();
+        
+        // Get search results count if searching
+        $searchResultsCount = $request->filled('search') ? $doas->total() : null;
+        
+        return view('doa', compact('doas', 'kategoris', 'totalDoa', 'searchResultsCount'));
     }
 
     /**
@@ -74,13 +87,33 @@ class DoaPublicController extends Controller
         $doas = Doa::where('status', 'published')
             ->where('kategori', $kategori)
             ->orderBy('created_at', 'desc')
+            ->orderBy('id', 'desc')
             ->paginate(12);
         
         $kategoris = Doa::where('status', 'published')
             ->select('kategori')
             ->distinct()
+            ->orderBy('kategori', 'asc')
             ->pluck('kategori');
         
-        return view('doa', compact('doas', 'kategoris', 'kategori'));
+        $totalDoa = Doa::where('status', 'published')
+            ->where('kategori', $kategori)
+            ->count();
+        
+        return view('doa', compact('doas', 'kategoris', 'kategori', 'totalDoa'));
+    }
+
+    /**
+     * Get latest doa (for API or AJAX)
+     */
+    public function latest($limit = 10)
+    {
+        $doas = Doa::where('status', 'published')
+            ->orderBy('created_at', 'desc')
+            ->orderBy('id', 'desc')
+            ->take($limit)
+            ->get();
+        
+        return response()->json($doas);
     }
 }
