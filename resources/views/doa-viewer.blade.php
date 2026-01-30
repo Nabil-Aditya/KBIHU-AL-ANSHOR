@@ -1,4 +1,4 @@
-@extends('layouts.doa-viewer')
+@extends('layouts.layout-pages')
 
 @section('content')
 

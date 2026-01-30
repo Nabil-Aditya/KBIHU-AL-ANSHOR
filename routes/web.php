@@ -8,49 +8,63 @@ use App\Http\Controllers\Admin\DoaController;
 use App\Http\Controllers\DoaPublicController;
 use App\Http\Controllers\Admin\FotoController;
 use App\Http\Controllers\FotoPublicController;
+use App\Http\Controllers\FotoAllController;
 use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\VideoPublicController;
+use App\Http\Controllers\VideoAllController;
 use App\Http\Controllers\Admin\BeritaController;
 use App\Http\Controllers\BeritaPublicController;
 use App\Http\Controllers\BeritaAllController;
 use App\Http\Controllers\Admin\InfografisController;
 use App\Http\Controllers\InfografisPublicController;
+use App\Http\Controllers\InfografisAllController; // ← TAMBAHKAN INI
 
 // Public Routes - Homepage
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-// Video Public Routes
-Route::get('/video', [VideoPublicController::class, 'index'])->name('video.index');
-Route::get('/video/kategori/{kategori}', [VideoPublicController::class, 'category'])->name('video.kategori');
-Route::get('/video/{id}', [VideoPublicController::class, 'show'])->name('video.show');
-Route::get('/api/video/{id}/embed', [VideoPublicController::class, 'getEmbedUrl'])->name('video.embed');
+// Video All Routes (LIFO - Semua Video)
+Route::get('/video', [VideoAllController::class, 'index'])->name('video.all');
+Route::get('/video/kategori/{kategori}', [VideoAllController::class, 'category'])->name('video.all.category');
+Route::get('/api/video/latest/{limit?}', [VideoAllController::class, 'latest'])->name('video.latest.api');
 
-// Berita Public Routes
-Route::get('/beritaNew', [BeritaPublicController::class, 'index'])->name('berita.index');
-Route::get('/berita/kategori/{kategori}', [BeritaPublicController::class, 'category'])->name('berita.kategori');
-Route::get('/berita/{slug}', [BeritaPublicController::class, 'show'])->name('berita.show');
+// Video Public Routes (Detail & API)
+Route::get('/video/{id}', [VideoPublicController::class, 'show'])->where('id', '[0-9]+')->name('video.show');
+Route::get('/api/video/{id}/embed', [VideoPublicController::class, 'getEmbedUrl'])->name('video.embed');
 
 // Berita All Routes (LIFO - Semua Berita)
 Route::get('/berita', [BeritaAllController::class, 'index'])->name('berita.all');
-Route::get('/berit/kategori/{kategori}', [BeritaAllController::class, 'category'])->name('berita.all.category');
+Route::get('/berita/kategori/{kategori}', [BeritaAllController::class, 'category'])->name('berita.all.kategori');
 Route::get('/api/berita/latest/{limit?}', [BeritaAllController::class, 'latest'])->name('berita.latest.api');
 
-// Foto Public Routes
+// Berita Public Routes (Detail)
+Route::get('/berita/{slug}', [BeritaPublicController::class, 'show'])->name('berita.show');
+
+// Doa All Routes (LIFO - Semua Doa)
+Route::get('/doa', [DoaPublicController::class, 'index'])->name('doa.all');
+Route::get('/doa/kategori/{kategori}', [DoaPublicController::class, 'category'])->name('doa.all.category');
+
+// Doa Public Routes (Detail & View)
+Route::get('/doa/view/{id}', [DoaPublicController::class, 'view'])->name('doa.public.view');
+Route::get('/api/doa/{id}', [DoaPublicController::class, 'show'])->name('doa.show');
+
+// ========== GALERI/FOTO ALL ROUTES (LIFO - Semua Galeri) ==========
+Route::get('/galeri', [FotoAllController::class, 'index'])->name('galeri.all');
+Route::get('/galeri/kategori/{kategori}', [FotoAllController::class, 'category'])->name('galeri.all.category');
+Route::get('/api/galeri/latest/{limit?}', [FotoAllController::class, 'latest'])->name('galeri.latest.api');
+
+// Foto Public Routes (Detail & API - untuk compatibility dengan kode lama)
 Route::get('/foto', [FotoPublicController::class, 'index'])->name('foto.index');
 Route::get('/foto/kategori/{kategori}', [FotoPublicController::class, 'category'])->name('foto.kategori');
 Route::get('/foto/{id}', [FotoPublicController::class, 'show'])->name('foto.show');
 Route::get('/api/foto/{id}', [FotoPublicController::class, 'getFotoData'])->name('foto.data');
 
-// Infografis Public Routes
-Route::get('/infografis', [InfografisPublicController::class, 'index'])->name('infografis.index');
+// ========== INFOGRAFIS ALL ROUTES (LIFO - Semua Infografis) ==========
+Route::get('/infografis', [InfografisAllController::class, 'index'])->name('infografis.index');
+Route::get('/api/infografis/latest/{limit?}', [InfografisAllController::class, 'latest'])->name('infografis.latest.api');
+
+// Infografis Public Routes (Detail & API)
 Route::get('/infografis/{slug}', [InfografisPublicController::class, 'show'])->name('infografis.show');
 Route::get('/api/infografis/{id}', [InfografisPublicController::class, 'getInfografisData'])->name('infografis.data');
-
-// Doa Public Routes
-Route::get('/doa', [DoaPublicController::class, 'index'])->name('doa.public.index');
-Route::get('/doa/view/{id}', [DoaPublicController::class, 'view'])->name('doa.public.view');
-Route::get('/doa/kategori/{kategori}', [DoaPublicController::class, 'category'])->name('doa.kategori');
-Route::get('/api/doa/{id}', [DoaPublicController::class, 'show'])->name('doa.show');
 
 // Other public pages
 Route::get('/blog/{id}', function ($id) {
@@ -72,7 +86,7 @@ Route::get('/starter', function () {
 // Authentication routes
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-    Route::post('/ogin', [AuthController::class, 'login'])->name('login.post');
+    Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 });
 
 Route::post('/logout', [AuthController::class, 'logout'])
