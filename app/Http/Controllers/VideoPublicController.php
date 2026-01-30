@@ -8,14 +8,14 @@ use Illuminate\Http\Request;
 class VideoPublicController extends Controller
 {
     /**
-     * Display homepage with 4 latest videos
+     * Display homepage with 3 latest videos
      */
     public function home()
     {
-        // Get 4 latest published videos
+        // Get 3 latest published videos
         $videos = Video::where('status', 'published')
             ->orderBy('created_at', 'desc')
-            ->take(4)
+            ->take(3)
             ->get();
         
         return view('index', compact('videos'));

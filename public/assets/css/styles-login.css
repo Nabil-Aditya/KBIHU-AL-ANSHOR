@@ -1,7 +1,7 @@
 
     :root {
-      --heading-color: #c9a961;
-      --accent-color: #b8941e;
+  --heading-color: #2d465e; /* Color for headings, subheadings and title throughout the website */
+  --accent-color: #866749; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
     }
 
     /* Title */

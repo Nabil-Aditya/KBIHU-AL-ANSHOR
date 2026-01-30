@@ -43,7 +43,7 @@ class InfografisPublicController extends Controller
         $latestInfografis = Infografis::where('status', 'published')
             ->where('id', '!=', $infografis->id)
             ->orderBy('created_at', 'desc')
-            ->take(5)
+            ->take(3)
             ->get();
         
         return view('detail-infografis', compact('infografis', 'latestInfografis'));
