@@ -22,6 +22,24 @@ use App\Http\Controllers\InfografisAllController; // ← TAMBAHKAN INI
 // Public Routes - Homepage
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+Route::prefix('profil')->name('profil.')->group(function () {
+    Route::get('/struktur-organisasi', function () {
+        return view('profil.struktur-organisasi');
+    })->name('struktur-organisasi');
+    
+    Route::get('/tugas-fungsi', function () {
+        return view('profil.tugas-fungsi');
+    })->name('tugas-fungsi');
+    
+    Route::get('/visi-misi', function () {
+        return view('profil.visi-misi');
+    })->name('visi-misi');
+    
+    Route::get('/latar-belakang', function () {
+        return view('profil.latar-belakang');
+    })->name('latar-belakang');
+});
+
 // Video All Routes (LIFO - Semua Video)
 Route::get('/video', [VideoAllController::class, 'index'])->name('video.all');
 Route::get('/video/kategori/{kategori}', [VideoAllController::class, 'category'])->name('video.all.category');
@@ -140,11 +158,12 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(fun
     Route::put('/doa/{id}', [DoaController::class, 'update'])->where('id', '[0-9]+')->name('doa.update');
     Route::delete('/doa/{id}', [DoaController::class, 'destroy'])->where('id', '[0-9]+')->name('doa.destroy');
 
-    // Jamaah
-    Route::get('/jamaah', [JamaahController::class, 'index'])->name('jamaah.index');
-    Route::post('/jamaah', [JamaahController::class, 'store'])->name('jamaah.store');
-    Route::get('/jamaah/{id}', [JamaahController::class, 'show'])->name('jamaah.show');
-    Route::put('/jamaah/{id}', [JamaahController::class, 'update'])->name('jamaah.update');
-    Route::delete('/jamaah/{id}', [JamaahController::class, 'destroy'])->name('jamaah.destroy');
-    Route::get('/jamaah/export', [JamaahController::class, 'export'])->name('jamaah.export');
+    //Jamaah
+    Route::get('/jamaah', [\App\Http\Controllers\Admin\JamaahController::class, 'index'])->name('jamaah.index');
+    Route::post('/jamaah', [\App\Http\Controllers\Admin\JamaahController::class, 'store'])->name('jamaah.store');
+    Route::get('/jamaah/{id}', [\App\Http\Controllers\Admin\JamaahController::class, 'show'])->name('jamaah.show');
+    Route::get('/jamaah/{id}/edit', [\App\Http\Controllers\Admin\JamaahController::class, 'edit'])->name('jamaah.edit'); // INI PENTING
+    Route::put('/jamaah/{id}', [\App\Http\Controllers\Admin\JamaahController::class, 'update'])->name('jamaah.update');
+    Route::delete('/jamaah/{id}', [\App\Http\Controllers\Admin\JamaahController::class, 'destroy'])->name('jamaah.destroy');
+    Route::get('/jamaah/export', [\App\Http\Controllers\Admin\JamaahController::class, 'export'])->name('jamaah.export');
 });

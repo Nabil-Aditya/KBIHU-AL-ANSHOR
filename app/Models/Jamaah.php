@@ -3,10 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Jamaah extends Model
 {
     protected $fillable = [
+        'user_id',
         'nama_lengkap',
         'nik',
         'no_paspor',
@@ -40,7 +42,33 @@ class Jamaah extends Model
         'terbayar' => 'decimal:2'
     ];
 
-    // Scope untuk filter
+    /**
+     * Relasi ke User
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Scope untuk filter berdasarkan user
+     */
+    public function scopeWithUser($query)
+    {
+        return $query->with('user');
+    }
+
+    /**
+     * Scope untuk mencari jamaah yang belum memiliki user
+     */
+    public function scopeWithoutUser($query)
+    {
+        return $query->whereNull('user_id');
+    }
+
+    /**
+     * Scope untuk filter jenis ibadah
+     */
     public function scopeHaji($query)
     {
         return $query->where('jenis_ibadah', 'haji');
@@ -56,11 +84,17 @@ class Jamaah extends Model
         return $query->where('jenis_ibadah', 'haji_khusus');
     }
 
+    /**
+     * Accessor untuk sisa pembayaran
+     */
     public function getSisaPembayaranAttribute()
     {
         return $this->total_biaya - $this->terbayar;
     }
 
+    /**
+     * Accessor untuk warna status pembayaran
+     */
     public function getStatusPembayaranColorAttribute()
     {
         $colors = [
@@ -73,9 +107,79 @@ class Jamaah extends Model
         return $colors[$this->status_pembayaran] ?? 'secondary';
     }
 
-    public static function findForEdit($id)
+    /**
+     * Method untuk membuat user jika belum ada
+     */
+    public function createUserAccount($password = null)
     {
-        return self::findOrFail($id);
+        if ($this->user) {
+            return $this->user;
+        }
+
+        $user = User::create([
+            'name' => $this->nama_lengkap,
+            'email' => $this->email,
+            'password' => $password ? \Hash::make($password) : \Hash::make('password123'),
+            'role' => 'jamaah',
+        ]);
+
+        $this->update(['user_id' => $user->id]);
+
+        return $user;
     }
 
+    /**
+     * Method untuk update user terkait
+     */
+    public function updateUserAccount(array $data = [])
+    {
+        if (!$this->user) {
+            return $this->createUserAccount();
+        }
+
+        $updateData = [];
+        
+        // Update name jika berbeda
+        if ($this->nama_lengkap !== $this->user->name) {
+            $updateData['name'] = $this->nama_lengkap;
+        }
+        
+        // Update email jika berbeda
+        if ($this->email !== $this->user->email) {
+            $updateData['email'] = $this->email;
+        }
+        
+        // Update password jika ada
+        if (!empty($data['password'])) {
+            $updateData['password'] = \Hash::make($data['password']);
+        }
+        
+        if (!empty($updateData)) {
+            $this->user->update($updateData);
+        }
+        
+        return $this->user;
+    }
+
+    /**
+     * Override delete untuk menghapus user juga
+     */
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($jamaah) {
+            if ($jamaah->user) {
+                $jamaah->user->delete();
+            }
+        });
+    }
+
+    /**
+     * Cari untuk edit - tetap dipertahankan untuk kompatibilitas
+     */
+    public static function findForEdit($id)
+    {
+        return self::with('user')->findOrFail($id);
+    }
 }

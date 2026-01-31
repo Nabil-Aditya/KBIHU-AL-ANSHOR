@@ -20,10 +20,10 @@
                 <li class="dropdown"><a href="#"><span>Profil</span> <i
                             class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>
-                        <li><a href="#">Pejabat</a></li>
-                        <li><a href="#">Tugas & Fungsi</a></li>
-                        <li><a href="#">Visi & Misi</a></li>
-                        <li><a href="#">Sejarah</a></li>
+                        <li><a href="{{ route('profil.struktur-organisasi') }}">Struktur Org</a></li>
+                        <li><a href="{{ route('profil.tugas-fungsi') }}">Tugas & Fungsi</a></li>
+                        <li><a href="{{ route('profil.visi-misi') }}">Visi & Misi</a></li>
+                        <li><a href="{{ route('profil.latar-belakang') }}">Latar Belakang</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Layanan</a></li>
@@ -45,7 +45,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('infografis.index') }}" class="{{ Request::routeIs('infografis.*') ? 'active' : '' }}">
+                    <a href="{{ route('infografis.index') }}"
+                        class="{{ Request::routeIs('infografis.*') ? 'active' : '' }}">
                         Infografis
                     </a>
                 </li>

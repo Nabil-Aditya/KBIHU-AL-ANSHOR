@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use App\Models\Jamaah;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class JamaahController extends Controller
 {
@@ -13,7 +16,7 @@ class JamaahController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Jamaah::query();
+        $query = Jamaah::query()->with('user');
         
         // Filter berdasarkan jenis ibadah
         if ($request->has('jenis_ibadah') && $request->jenis_ibadah != 'semua') {
@@ -73,7 +76,7 @@ class JamaahController extends Controller
             'tanggal_lahir' => 'required|date',
             'alamat' => 'required|string',
             'no_telepon' => 'required|string|max:20',
-            'email' => 'nullable|email|max:255',
+            'email' => 'required|email|max:255|unique:users,email',
             'jenis_ibadah' => 'nullable|in:haji,umrah,haji_khusus',
             'gelombang' => 'nullable|in:1,2',
             'paket' => 'nullable|string|max:100',
@@ -87,7 +90,9 @@ class JamaahController extends Controller
             'mahram_dengan' => 'nullable|string|max:255',
             'kelompok' => 'nullable|string|max:100',
             'pembimbing' => 'nullable|string|max:100',
-            'keterangan' => 'nullable|string'
+            'keterangan' => 'nullable|string',
+            // Password validation
+            'password' => 'nullable|string|min:6',
         ]);
         
         $validated['is_mahram'] = $request->has('is_mahram');
@@ -99,10 +104,34 @@ class JamaahController extends Controller
             $validated['terbayar'] = $request->total_biaya;
         }
         
-        Jamaah::create($validated);
+        DB::beginTransaction();
         
-        return redirect()->route('admin.jamaah.index')
-            ->with('success', 'Data jamaah berhasil ditambahkan.');
+        try {
+            // 1. Create user account
+            $userData = [
+                'name' => $validated['nama_lengkap'],
+                'email' => $validated['email'],
+                'password' => $validated['password'] ? Hash::make($validated['password']) : Hash::make('password123'),
+                'role' => 'jamaah',
+            ];
+            
+            $user = User::create($userData);
+            
+            // 2. Save jamaah data with user_id
+            $validated['user_id'] = $user->id;
+            Jamaah::create($validated);
+            
+            DB::commit();
+            
+            return redirect()->route('admin.jamaah.index')
+                ->with('success', 'Data jamaah dan akun berhasil ditambahkan.');
+                
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()
+                ->withInput()
+                ->with('error', 'Gagal menambahkan data: ' . $e->getMessage());
+        }
     }
 
     /**
@@ -110,7 +139,16 @@ class JamaahController extends Controller
      */
     public function show($id)
     {
-        $jamaah = Jamaah::findOrFail($id);
+        $jamaah = Jamaah::with('user')->findOrFail($id);
+        return response()->json($jamaah);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit($id)
+    {
+        $jamaah = Jamaah::with('user')->findOrFail($id);
         return response()->json($jamaah);
     }
 
@@ -119,7 +157,7 @@ class JamaahController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $jamaah = Jamaah::findOrFail($id);
+        $jamaah = Jamaah::with('user')->findOrFail($id);
         
         $validated = $request->validate([
             'nama_lengkap' => 'required|string|max:255',
@@ -130,7 +168,7 @@ class JamaahController extends Controller
             'tanggal_lahir' => 'required|date',
             'alamat' => 'required|string',
             'no_telepon' => 'required|string|max:20',
-            'email' => 'nullable|email|max:255',
+            'email' => 'required|email|max:255|unique:users,email,' . ($jamaah->user ? $jamaah->user->id : 'NULL'),
             'jenis_ibadah' => 'nullable|in:haji,umrah,haji_khusus',
             'gelombang' => 'nullable|in:1,2',
             'paket' => 'nullable|string|max:100',
@@ -144,15 +182,57 @@ class JamaahController extends Controller
             'mahram_dengan' => 'nullable|string|max:255',
             'kelompok' => 'nullable|string|max:100',
             'pembimbing' => 'nullable|string|max:100',
-            'keterangan' => 'nullable|string'
+            'keterangan' => 'nullable|string',
+            // Password validation
+            'password' => 'nullable|string|min:6',
         ]);
         
         $validated['is_mahram'] = $request->has('is_mahram');
         
-        $jamaah->update($validated);
+        DB::beginTransaction();
         
-        return redirect()->route('admin.jamaah.index')
-            ->with('success', 'Data jamaah berhasil diperbarui.');
+        try {
+            // Update jamaah data
+            $jamaah->update($validated);
+            
+            // Update or create user
+            if ($jamaah->user) {
+                // Update existing user
+                $userData = [
+                    'name' => $validated['nama_lengkap'],
+                    'email' => $validated['email'],
+                ];
+                
+                // Update password if provided
+                if (!empty($validated['password'])) {
+                    $userData['password'] = Hash::make($validated['password']);
+                }
+                
+                $jamaah->user->update($userData);
+            } else {
+                // Create new user if not exists
+                $userData = [
+                    'name' => $validated['nama_lengkap'],
+                    'email' => $validated['email'],
+                    'password' => $validated['password'] ? Hash::make($validated['password']) : Hash::make('password123'),
+                    'role' => 'jamaah',
+                ];
+                
+                $user = User::create($userData);
+                $jamaah->update(['user_id' => $user->id]);
+            }
+            
+            DB::commit();
+            
+            return redirect()->route('admin.jamaah.index')
+                ->with('success', 'Data jamaah dan akun berhasil diperbarui.');
+                
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()
+                ->withInput()
+                ->with('error', 'Gagal memperbarui data: ' . $e->getMessage());
+        }
     }
 
     /**
@@ -160,13 +240,31 @@ class JamaahController extends Controller
      */
     public function destroy($id)
     {
-        $jamaah = Jamaah::findOrFail($id);
-        $jamaah->delete();
+        $jamaah = Jamaah::with('user')->findOrFail($id);
         
-        return redirect()->route('admin.jamaah.index')
-            ->with('success', 'Data jamaah berhasil dihapus.');
+        DB::beginTransaction();
+        
+        try {
+            // Delete user if exists
+            if ($jamaah->user) {
+                $jamaah->user->delete();
+            }
+            
+            // Delete jamaah
+            $jamaah->delete();
+            
+            DB::commit();
+            
+            return redirect()->route('admin.jamaah.index')
+                ->with('success', 'Data jamaah dan akun berhasil dihapus.');
+                
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()
+                ->with('error', 'Gagal menghapus data: ' . $e->getMessage());
+        }
     }
-    
+
     /**
      * Export data to Excel
      */
