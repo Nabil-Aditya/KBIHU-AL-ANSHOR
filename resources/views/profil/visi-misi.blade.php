@@ -35,7 +35,7 @@
             </div>
             
             <div class="row justify-content-center">
-                <div class="col-lg-10" data-aos="zoom-in">
+                <div class="col-lg-12" data-aos="zoom-in">
                     <div class="visi-card p-5 rounded-4 shadow-lg bg-white position-relative overflow-hidden">
                         <div class="visi-icon position-absolute" style="top: -20px; right: -20px; opacity: 0.1;">
                             <i class="bi bi-bullseye" style="font-size: 10rem; color: #866749;"></i>
